@@ -1,0 +1,69 @@
+﻿<link href="~/Content/Publicar.css" rel="stylesheet" />
+<h2>¡PUBLICA TU PRODUCTO!</h2>
+
+<div class="contenedor_principal">
+    <div class="contenedor_imagenes_descritpcion">
+        <div class="contenedor_imagenes" id="contenedor_imagen">
+        </div>
+        <form action="/" method="post">
+            <input type="file" name="name" value="" id="imagen"/>
+            <input type="submit"  class="btn btn-success" name="name" value="Guardar Imagen" />
+        </form>
+        
+        <div>Descripción del producto:</div>
+        <div class="contenedor_textarea">
+            <textarea>
+            </textarea>
+        </div>
+    </div>
+    <nav class="contenedor_formulario">
+        <form action="/" method="post">
+            <select class="dato" name="CATEGORÍA" id="categoria">
+                <option>Hogar</option>
+                <option>Vehiculos</option>
+                <option>Tecnologia</option>
+                <option>Calzado</option>
+                <option>Ropa</option>
+                <option>Accesorios</option>
+                <option>Otros</option>
+            </select>
+            <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" />
+            <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" />
+            <div class="dato dato_metodo_pago">MÉTODO DE PAGO</div>
+            <nav class="contenedor_lista">
+                <ul id="metodo_pago">
+                    <li>nequi</li>
+                    <li>Daviplata</li>
+                    <li>Intercambio</li>
+                </ul>
+            </nav>
+            
+            <input type="button" name="name" value="PUBLICAR" class="publicar" />
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>
+    //variable donde se ubican las categorías del producto
+   // $('#categoria')
+    //variable donde se ubican los métodos de pago
+    //$('#metodo_pago')
+    //variable donde se ubican las imagenes
+    //$('#contenedor_imagen')
+    //funcion que permite subir imagenes
+    $('#imagen').on("change", function () {
+        var imagen = $(this)[0].files[0];
+        console.log(imagen.name);
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(imagen);
+        fileReader.onload = function () {
+            $('#contenedor_imagen').append(`<div><img src="${fileReader.result}" alt="Alternate Text" /></div>`)
+            //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
+            console.log(fileReader.result);
+        }
+        
+    });
+    
+
+</script>

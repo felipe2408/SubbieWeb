@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.title Home</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body >
+    <div class="navbar   navbar-left barra-lateral ">
+        <div class="navbar-header ">
+            <div class="navbar-header  ">
+                <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Subbie", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <br />
+            <div class="barra-lateral">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <br />
+                    <li>@Html.ActionLink("Publicar", "Publicar", "Home")</li>
+                    <br>
+                    <li>@Html.ActionLink("Productos", "Contact", "Home")</li>
+                    <br />
+                    <li>@Html.ActionLink("Chat", "Index", "Home")</li>
+                    <br />
+                    <li>@Html.ActionLink("Estadisticas", "About", "Home")</li>
+                    <br>
+                    <li>@Html.ActionLink("Salir", "Contact", "Home")</li>
+                    <br>
+                    <li>@Html.ActionLink("PRUEBA", "Contact", "Home")</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

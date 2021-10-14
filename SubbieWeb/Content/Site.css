@@ -1,0 +1,76 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/*
+    Comienza codigo nuevo
+*/
+
+.botones-interaccion {
+    background-color: rgb(103, 31,175,);
+    border-radius: 15px;
+}
+
+.botones-principales {
+    background-color: rgb(16, 255, 202);
+    border-radius: 15px;
+}
+
+.barra-navegacion {
+    /*
+        barra de menu y registrer
+    */
+    background-color: rgb(103, 31, 175);
+}
+
+.color-contenedores {
+    /*
+        Cuadros blancos en todas las paginas
+    */
+    background-color: rgb(242, 242, 242);
+}
+
+.barra-lateral {
+    /*
+       Barra lateral principal donde ira el home,chat etc
+    */
+    background-color: rgb(103, 31, 175);
+    border-radius: 10px;
+    width: 15%;
+    height: 100%;
+}
+
+
+
+
+
+
+/*Finaliza codigo nuevo*/
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-left {
+    position: relative;
+    width: 200px;
+    background-color: rgb(103, 31, 175);
+    margin-left:20px;
+}

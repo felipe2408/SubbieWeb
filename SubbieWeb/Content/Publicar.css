@@ -1,0 +1,125 @@
+﻿/*TITULO*/
+h2{
+    position:relative;
+    margin-top:-40px;
+    margin-left:300px;
+}
+/*IMAGENES Y DESCRIPCIÓN*/
+.contenedor_principal{
+    position:relative;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:nowrap;
+    margin-left:10%;
+    width:90%;
+}
+.contenedor_imagenes_descritpcion {
+    width: 60%;
+    background-color: rgb(242,242,242);
+    height: 600px;
+    padding-top: 50px;
+    border-radius: 30px;
+    float: left;
+    margin-right: 10%;
+
+}
+.contenedor_imagenes{
+    position:relative;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:nowrap;
+    width:90%;
+    margin-left:5%;
+    overflow-x:scroll;
+    margin-bottom:25px;
+
+}
+.contenedor_imagenes div{
+   width:30%!important;
+   height:200px!important;
+   background-color:gray;
+   object-fit:contain;
+
+}
+img {
+    width: 100% ;
+    height: 200px !important;
+    object-fit: contain;
+}
+.contenedor_textarea{
+    width:100%;
+    position:relative;
+    text-align:center;
+}
+textarea {
+    position: relative;
+    margin-top: 20px;
+    resize:none;
+    width: 100%;
+    height:200px;
+    margin-left: 5%;
+}
+/*FORMULARIO*/
+.contenedor_formulario {
+    display:flex;
+    justify-content:space-around;
+    width: 30%;
+    background-color: rgb(242,242,242);
+    height: 600px;
+    padding-top: 50px;
+    border-radius: 30px;
+}
+.dato{
+    width:80%;
+    height:50px;
+    margin-left:9%;
+    margin-top:30px;
+    border-radius:20px;
+    border:none;
+    background-color:white
+}
+
+
+.publicar {
+    width: 80%;
+    height: 50px;
+    margin-left: 9%;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: none;
+    background-color:#671faf !important;
+    color: white;
+    z-index:1;
+}
+/*NAV METODO DE PAGO*/
+.dato_metodo_pago{
+    padding-top:15px;
+    text-align:center;
+}
+.dato_metodo_pago:hover ~ .contenedor_lista {
+    visibility: visible;
+    opacity: 1;
+}
+.contenedor_lista:hover {
+    visibility: visible;
+    opacity: 1;
+}
+.contenedor_lista {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 35px;
+    background-color: white;
+    border-radius: 13px;
+    z-index: 100;
+    font-size: 15px;
+    text-align: justify;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.contenedor_lista li:hover {
+    color: #671faf;
+    font-size: 18px;
+}
