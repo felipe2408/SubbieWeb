@@ -21,6 +21,7 @@ namespace SubbieWeb.Controllers.Servicios
                 {
                     foreach (var item in state.Value.Errors)
                     {
+
                         error += $"{item.ErrorMessage}";
                     }
                 }

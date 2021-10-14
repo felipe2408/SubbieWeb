@@ -12,7 +12,6 @@ evt.addEventListener('click', function () {
             .then(data => {
                 if (data == null) {
                     alert("Ouch! Al parecer tu clave o contraseña no son correctos")
-
                 } else {
                     var url = "https://localhost:44332/Home/Index";
                     window.location = url;

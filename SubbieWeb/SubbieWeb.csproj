@@ -230,6 +230,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\Publicar.css" />
     <Content Include="Content\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -248,6 +250,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="img\The Beatles.jpg" />
+    <Content Include="img\Trazado -1%402x.png" />
+    <Content Include="img\Trazado -1.png" />
+    <Content Include="img\Trazado -2%402x.png" />
+    <Content Include="img\Trazado -2.png" />
+    <Content Include="img\Trazado 5%402x.png" />
+    <Content Include="img\Trazado 5.png" />
+    <Content Include="img\Trazado 6%402x.png" />
+    <Content Include="img\Trazado 6.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
