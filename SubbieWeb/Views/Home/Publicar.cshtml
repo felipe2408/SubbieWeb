@@ -37,61 +37,13 @@
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
 </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
-    //contador para asignar el valor en el input
-    var contador = 0;
-    //variable donde se ubican las categorías del producto
-    $(document).on('click', '.metodo_pago', function (e) {
 
-        //obtenemos a qué elemento le dieron clic
-        elemento = $(".metodo_pago").index(this);
 
-        //metodo de pago 1
-        var mp1 = document.getElementById(`metodopago1`);
-        //metodo de pago 2
-        var mp2 = document.getElementById(`metodopago2`);
-
-        //asignamos valor al input del método de pago
-        if ((contador % 2) == 0) {
-            mp1.value = $(`#metodo_pago_${elemento}`).val();
-        }
-        else {
-            mp2.value = $(`#metodo_pago_${elemento}`).val();
-        }
-        contador++;
-
-    });
-    //obtenemos todos los valores para enviarlos al microservicio o controlador
-    $('#publicar').click(function () {
-        console.log('textarea ' + $('#textarea').val());
-        console.log('categoria ' + $('#categoria').val());
-        console.log('ubicacacion ' + $('#ubicacion').val());
-        console.log('precio ' + $('#precio').val());
-        console.log('metodopago1 ' + $('#metodopago1').val());
-        console.log('metodopago2 ' + $('#metodopago2').val());
-    }
-    );
-
-    //variable donde se ubican los métodos de pago
-    //$('#metodo_pago')
-    //variable donde se ubican las imagenes
-    //$('#contenedor_imagen')
-    //funcion que permite subir imagenes
-    $('#imagen').on("change", function () {
-        var imagen = $(this)[0].files[0];
-        console.log(imagen.name);
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(imagen);
-        fileReader.onload = function () {
-            $('#contenedor_imagen').append(`<div><img src="${fileReader.result}" alt="Alternate Text" /></div>`)
-            //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
-            console.log(fileReader.result);
-        }
-
-    });
+    
+    
+    
 
 
 </script>
