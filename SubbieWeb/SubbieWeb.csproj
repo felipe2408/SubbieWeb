@@ -242,6 +242,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Home.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Publicar.css" />
     <Content Include="Content\Register.css" />
