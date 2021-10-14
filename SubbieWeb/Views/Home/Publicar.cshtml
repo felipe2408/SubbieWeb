@@ -6,14 +6,13 @@
         <div class="contenedor_imagenes" id="contenedor_imagen">
         </div>
         <form action="/" method="post">
-            <input type="file" name="name" value="" id="imagen"/>
-            <input type="submit"  class="btn btn-success" name="name" value="Guardar Imagen" />
+            <input type="file" name="name" value="" id="imagen" />
+            <input type="submit" class="btn btn-success" name="name" value="Guardar Imagen" />
         </form>
-        
+
         <div>Descripción del producto:</div>
         <div class="contenedor_textarea">
-            <textarea>
-            </textarea>
+            <textarea id="textarea"></textarea>
         </div>
     </div>
     <nav class="contenedor_formulario">
@@ -23,30 +22,59 @@
                 <option>Vehiculos</option>
                 <option>Tecnologia</option>
                 <option>Calzado</option>
-                <option>Ropa</option>
-                <option>Accesorios</option>
                 <option>Otros</option>
             </select>
-            <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" />
-            <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" />
+            <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" id="ubicacion" />
+            <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
             <div class="dato dato_metodo_pago">MÉTODO DE PAGO</div>
             <nav class="contenedor_lista">
-                <ul id="metodo_pago">
-                    <li>nequi</li>
-                    <li>Daviplata</li>
-                    <li>Intercambio</li>
-                </ul>
+                <div class="metodo_pago">nequi <input type="hidden" name="name" value="nequi" id="metodo_pago_0" /></div>
+                <div class="metodo_pago">Daviplata<input type="hidden" name="name" value="Daviplata" id="metodo_pago_1" /></div>
+                <div class="metodo_pago">intercambio<input type="hidden" name="name" value="intercambio" id="metodo_pago_2" /></div>
             </nav>
-            
-            <input type="button" name="name" value="PUBLICAR" class="publicar" />
+            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago1" />
+            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago2" />
+            <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
-    </div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
+    //contador para asignar el valor en el input
+    var contador = 0;
     //variable donde se ubican las categorías del producto
-   // $('#categoria')
+    $(document).on('click', '.metodo_pago', function (e) {
+
+        //obtenemos a qué elemento le dieron clic
+        elemento = $(".metodo_pago").index(this);
+
+        //metodo de pago 1
+        var mp1 = document.getElementById(`metodopago1`);
+        //metodo de pago 2
+        var mp2 = document.getElementById(`metodopago2`);
+
+        //asignamos valor al input del método de pago
+        if ((contador % 2) == 0) {
+            mp1.value = $(`#metodo_pago_${elemento}`).val();
+        }
+        else {
+            mp2.value = $(`#metodo_pago_${elemento}`).val();
+        }
+        contador++;
+
+    });
+    //obtenemos todos los valores para enviarlos al microservicio o controlador
+    $('#publicar').click(function () {
+        console.log('textarea ' + $('#textarea').val());
+        console.log('categoria ' + $('#categoria').val());
+        console.log('ubicacacion ' + $('#ubicacion').val());
+        console.log('precio ' + $('#precio').val());
+        console.log('metodopago1 ' + $('#metodopago1').val());
+        console.log('metodopago2 ' + $('#metodopago2').val());
+    }
+    );
+
     //variable donde se ubican los métodos de pago
     //$('#metodo_pago')
     //variable donde se ubican las imagenes
@@ -62,8 +90,8 @@
             //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
             console.log(fileReader.result);
         }
-        
+
     });
-    
+
 
 </script>
