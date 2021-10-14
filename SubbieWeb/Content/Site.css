@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    overflow: scroll;
+    font-weight: 300;
 }
 
 /*
@@ -15,6 +15,7 @@
 .botones-principales {
     background-color: rgb(16, 255, 202);
     border-radius: 15px;
+    padding: 5px;
 }
 
 .barra-navegacion {
@@ -36,15 +37,39 @@
        Barra lateral principal donde ira el home,chat etc
     */
     background-color: rgb(103, 31, 175);
-    border-radius: 10px;
-    width: 15%;
-    height: 100%;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    /*width: 15%;
+    height: 100%;*/
 }
+#contenedor_barra {
+    min-height: 95vh;
+    float: left;
+}
+.logoS {
+    padding: 0.875rem 1.25rem;
 
-
-
-
-
+}
+.menu {
+    width: 10rem;
+}
+/*INICIO CSS index*/
+.barra_principal{
+    padding: 10px;
+    margin: 10px;
+}
+#buscar {
+    border-radius: 10px;
+    height: 25px;
+}
+#contenedor_perfil{
+    border: 2px solid;
+}
+a{
+    text-decoration: none;
+}
+/*FIN CSS index*/
 
 /*Finaliza codigo nuevo*/
 

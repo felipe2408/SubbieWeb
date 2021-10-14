@@ -1,0 +1,14 @@
+﻿body {
+    overflow:hidden;
+    font-weight:300;
+    color: white;
+}
+#contenedor_barra {
+    min-height: 100vh;
+}
+#contenedor_barra .logoS{
+    padding: .875rem 1.25rem;
+}
+#contenedor_barra .menu{
+    width: 18rem;
+}
