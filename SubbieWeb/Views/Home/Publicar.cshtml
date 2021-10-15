@@ -41,9 +41,14 @@
 <script>
 
 
-    
- 
-
+    const url = 'https://localhost:44332/api/categoriaProducto/categorias'
+    fetch(url).then(response => response.json()).then(data => {
+        let ele = document.getElementById('catApi')
+        for (let i = 0; i < data.length; i++) {
+            ele.innerHTML += `<p>${data[i].pk_idcatproducto}</p> <p>${data[i].categoria}</p>`
+        }
+        console.log({ data }
+    }).catch(err => console.log(err))
     const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
     fetch(url).then(response => response.json()).then(data => {
         let ele = document.getElementById('catApi')
@@ -53,10 +58,5 @@
         console.log( data )
 
     }).catch(err => console.log(err))
-
-    
-    
-    
-
 
 </script>
