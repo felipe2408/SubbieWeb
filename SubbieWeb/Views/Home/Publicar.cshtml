@@ -17,7 +17,6 @@
     <nav class="contenedor_formulario">
         <form action="/" method="post">
             <select class="dato" name="CATEGORÍA" id="categoria">
-                <option>Categoría</option>
             </select>
             <input type="text" name="name" value="UBICACIÓN:" class="dato" id="ubicacion" />
             <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
@@ -92,15 +91,15 @@
 
         }).catch(err => console.log(err));
         metodoPago();
-    }
-
+            }
+            metodoPago();
     function metodoPago()
     {
         const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('contenedor_lista')
             for (let i = 0; i < data.length; i++) {
-                ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  ame="name" value="nequi" id="metodo_pago_${i}" /></div>`
+                ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  name="name" value="${data[i].formapago}" id="metodo_pago_${i}" /></div>`
             }
             console.log(data);
 
