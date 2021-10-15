@@ -6,11 +6,9 @@
     <div class="contenedor_imagenes_descritpcion">
         <div class="contenedor_imagenes" id="contenedor_imagen">
         </div>
-        <form action="/" method="post">
-            <input type="file" name="name" value="" id="imagen" />
-            <input type="submit" class="btn btn-success" name="name" value="Guardar Imagen" />
-        </form>
 
+            <input type="file" name="name" value="" id="imagen" />
+            <div class="vista_agregar btn btn-light">+</div>
         <div>Descripción del producto:</div>
         <div class="contenedor_textarea">
             <textarea id="textarea"></textarea>
@@ -19,44 +17,100 @@
     <nav class="contenedor_formulario">
         <form action="/" method="post">
             <select class="dato" name="CATEGORÍA" id="categoria">
-                <option>Hogar</option>
-                <option>Vehiculos</option>
-                <option>Tecnologia</option>
-                <option>Calzado</option>
-                <option>Otros</option>
+                <option>Categoría</option>
             </select>
-            <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" id="ubicacion" />
+            <input type="text" name="name" value="UBICACIÓN:" class="dato" id="ubicacion" />
             <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
-            <div class="dato dato_metodo_pago">MÉTODO DE PAGO</div>
-            <div id ="catApi"></div>
-            <nav  class="contenedor_lista">
-                
+            <div class="dato dato_metodo_pago" id="dato_metodo_pago">MÉTODO DE PAGO</div>
+            <nav class="contenedor_lista" id="contenedor_lista">
             </nav>
-            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago1" />
-            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago2" />
+            <input type="hidden" id="metodopago1" name="name" value="" />
+            <input type="hidden" id="metodopago2" name="name" value="" />
+
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
 
+    categoria();
+    metodoPago();
+    //contador para asignar el valor en el input
+    var contador = 0;
+    //variable donde se ubican las categorías del producto
+    $(document).on('click', '.metodo_pago', function (e) {
+        let metodo_pago1 = 0, metodo_pago2 = 0;
+    
+        //obtenemos a qué elemento le dieron clic
+        elemento = $(".metodo_pago").index(this);
 
-    const url = 'https://localhost:44332/api/categoriaProducto/categorias'
-    fetch(url).then(response => response.json()).then(data => {
-        let ele = document.getElementById('catApi')
-        for (let i = 0; i < data.length; i++) {
-            ele.innerHTML += `<p>${data[i].pk_idcatproducto}</p> <p>${data[i].categoria}</p>`
+        //metodo de pago 1 input hidden
+        var mp1 = document.getElementById(`metodopago1`);
+        //metodo de pago 2 input hidden
+        var mp2 = document.getElementById(`metodopago2`);
+        if (mp1.value == '' && mp2.value == '') {
+            contador = 0;
         }
-        console.log({ data }
-    }).catch(err => console.log(err))
-    const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
-    fetch(url).then(response => response.json()).then(data => {
-        let ele = document.getElementById('catApi')
-        for (let i = 0; i < data.length; i++) {
-            ele.innerHTML += `<p>${data[i].pk_idpago}</p> <p>${data[i].formapago}</p>`
-        }
-        console.log( data )
+       
+        if (contador == 0 || mp1.value == '' && mp1.value != mp2.value && $(`#metodo_pago_${elemento}`).val() != mp2.value ) {
+            mp1.value = $(`#metodo_pago_${elemento}`).val();
 
-    }).catch(err => console.log(err))
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if ((contador == 1 && $(`#metodo_pago_${elemento}`).val() != mp1.value) || mp2.value == '' && mp2.value != mp1.value && $(`#metodo_pago_${elemento}`).val() != mp1.value) {
+            mp2.value = $(`#metodo_pago_${elemento}`).val();
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 1 && mp1.value == $(`#metodo_pago_${elemento}`).val() ) {
+            mp1.value = '';
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 1 && mp2.value == $(`#metodo_pago_${elemento}`).val()  ) {
+            mp2.value = '';
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 2 && mp1.value != $(`#metodo_pago_${elemento}`).val() && mp2.value != $(`#metodo_pago_${elemento}`).val()) {
+            alert('¡Ya se han seleccionado los dos métodos de pago permitidos! ¡Si se selecciona un método de pago ya establecido este se eliminará!');
+        }
+        
+        contador++;
+
+    });
+
+    function categoria()
+    {
+        const url = 'https://localhost:44332/api/categoriaProducto/categorias'
+        fetch(url).then(response => response.json()).then(data => {
+            let ele = document.getElementById('categoria')
+            for (let i = 0; i < data.length; i++) {
+                ele.innerHTML += `<option>${data[i].categoria}</option>`
+            }
+            console.log(data);
+
+        }).catch(err => console.log(err));
+       
+    }
+
+    function metodoPago() {
+        const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
+        fetch(url).then(response => response.json()).then(data => {
+            let ele = document.getElementById('contenedor_lista')
+            for (let i = 0; i < data.length; i++) {
+                ele.innerHTML += <div class="metodo_pago">${data[i].formapago}<input type="hidden" ame="name" value="${data[i].formapago}" id="metodo_pago_${i}" /></div>
+            }
+            console.log(data);
+
+        }).catch(err => console.log(err));
+
+    }
+
+    
+    
+    
+
 
 </script>
