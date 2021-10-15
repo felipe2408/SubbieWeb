@@ -18,67 +18,95 @@
         <form action="/" method="post">
             <select class="dato" name="CATEGORÍA" id="categoria">
                 <option>Categoría</option>
-                <option>Hogar</option>
-                <option>Vehiculos</option>
-                <option>Tecnologia</option>
-                <option>Calzado</option>
-                <option>Otros</option>
             </select>
-            <input type="text"  name="name" value="UBICACIÓN:" class="dato" id="ubicacion" />
+            <input type="text" name="name" value="UBICACIÓN:" class="dato" id="ubicacion" />
             <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
-            <div class="dato dato_metodo_pago" id="dato_metodo_pago">MÉTODO DE PAGO</div> 
-            <nav class="contenedor_lista">
-                <div class="metodo_pago">nequi <input type="checkbox"  ame="name" value="nequi" id="metodo_pago_0" /></div>
-                <div class="metodo_pago">Daviplata<input type="checkbox" name="name" value="Daviplata" id="metodo_pago_1" /></div>
-                <div class="metodo_pago">intercambio<input type="checkbox" name="name" value="intercambio" id="metodo_pago_2" /></div>
-            </nav>         
+            <div class="dato dato_metodo_pago" id="dato_metodo_pago">MÉTODO DE PAGO</div>
+            <nav class="contenedor_lista" id="contenedor_lista">
+            </nav>
+            <input type="hidden" id="metodopago1" name="name" value="" />
+            <input type="hidden" id="metodopago2" name="name" value="" />
+
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
+
+    categoria();
     //contador para asignar el valor en el input
     var contador = 0;
     //variable donde se ubican las categorías del producto
     $(document).on('click', '.metodo_pago', function (e) {
         let metodo_pago1 = 0, metodo_pago2 = 0;
-
+    
         //obtenemos a qué elemento le dieron clic
         elemento = $(".metodo_pago").index(this);
 
-        //metodo de pago 1
+        //metodo de pago 1 input hidden
         var mp1 = document.getElementById(`metodopago1`);
-        //metodo de pago 2
+        //metodo de pago 2 input hidden
         var mp2 = document.getElementById(`metodopago2`);
+        if (mp1.value == '' && mp2.value == '') {
+            contador = 0;
+        }
+       
+        if (contador == 0 || mp1.value == '' && mp1.value != mp2.value && $(`#metodo_pago_${elemento}`).val() != mp2.value ) {
+            mp1.value = $(`#metodo_pago_${elemento}`).val();
+
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if ((contador == 1 && $(`#metodo_pago_${elemento}`).val() != mp1.value) || mp2.value == '' && mp2.value != mp1.value && $(`#metodo_pago_${elemento}`).val() != mp1.value) {
+            mp2.value = $(`#metodo_pago_${elemento}`).val();
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 1 && mp1.value == $(`#metodo_pago_${elemento}`).val() ) {
+            mp1.value = '';
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 1 && mp2.value == $(`#metodo_pago_${elemento}`).val()  ) {
+            mp2.value = '';
+            $('#dato_metodo_pago').empty();
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+        }
+        else if (contador > 2 && mp1.value != $(`#metodo_pago_${elemento}`).val() && mp2.value != $(`#metodo_pago_${elemento}`).val()) {
+            alert('¡Ya se han seleccionado los dos métodos de pago permitidos! ¡Si se selecciona un método de pago ya establecido este se eliminará!');
+        }
         
-        //asignamos valor al input del método de pago
-        //if (mp1.spellcheck == true) {
-            
-            //mp1.value = $(`#metodo_pago_${elemento}`).val();
-        //}
-        //else {
-        
-        $('#dato_metodo_pago').append ( ' '+$(`#metodo_pago_${elemento}`).val());
-        //}
         contador++;
 
     });
-    //obtenemos todos los valores para enviarlos al microservicio o controlador
-    $('#publicar').click(function () {
-        console.log('textarea ' + $('#textarea').val());
-        console.log('categoria ' + $('#categoria').val());
-        console.log('ubicacacion ' + $('#ubicacion').val());
-        console.log('precio ' + $('#precio').val());
-        console.log('metodopago1 ' + $('#metodopago1').val());
-        console.log('metodopago2 ' + $('#metodopago2').val());
-    }
-    );
 
-    //variable donde se ubican los métodos de pago
-    //$('#metodo_pago')
-    //variable donde se ubican las imagenes
-    //$('#contenedor_imagen')
+    function categoria()
+    {
+        const url = 'https://localhost:44332/api/categoriaProducto/categorias'
+        fetch(url).then(response => response.json()).then(data => {
+            let ele = document.getElementById('categoria')
+            for (let i = 0; i < data.length; i++) {
+                ele.innerHTML += `<option>${data[i].formapago}</option>`
+            }
+            console.log(data);
+
+        }).catch(err => console.log(err));
+        metodoPago();
+    }
+
+    function metodoPago()
+    {
+        const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
+        fetch(url).then(response => response.json()).then(data => {
+            let ele = document.getElementById('contenedor_lista')
+            for (let i = 0; i < data.length; i++) {
+                ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  ame="name" value="nequi" id="metodo_pago_${i}" /></div>`
+            }
+            console.log(data);
+
+        }).catch(err => console.log(err));
+
+    }
     //funcion que permite subir imagenes
     $('#imagen').on("change", function () {
         var imagen = $(this)[0].files[0];
@@ -92,6 +120,16 @@
         }
 
     });
+    //obtenemos todos los valores para enviarlos al microservicio o controlador
+    $('#publicar').click(function () {
+        console.log('textarea ' + $('#textarea').val());
+        console.log('categoria ' + $('#categoria').val());
+        console.log('ubicacacion ' + $('#ubicacion').val());
+        console.log('precio ' + $('#precio').val());
+        console.log('metodopago1 ' + $('#metodopago1').val());
+        console.log('metodopago2 ' + $('#metodopago2').val());
+    }
+    );
 
 
 </script>
