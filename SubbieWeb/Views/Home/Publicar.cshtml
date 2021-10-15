@@ -28,10 +28,9 @@
             <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" id="ubicacion" />
             <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
             <div class="dato dato_metodo_pago">MÉTODO DE PAGO</div>
-            <nav class="contenedor_lista">
-                <div class="metodo_pago">nequi <input type="hidden" name="name" value="nequi" id="metodo_pago_0" /></div>
-                <div class="metodo_pago">Daviplata<input type="hidden" name="name" value="Daviplata" id="metodo_pago_1" /></div>
-                <div class="metodo_pago">intercambio<input type="hidden" name="name" value="intercambio" id="metodo_pago_2" /></div>
+            <div id ="catApi"></div>
+            <nav  class="contenedor_lista">
+                
             </nav>
             <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago1" />
             <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago2" />
@@ -41,6 +40,19 @@
 
 <script>
 
+
+    
+ 
+
+    const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
+    fetch(url).then(response => response.json()).then(data => {
+        let ele = document.getElementById('catApi')
+        for (let i = 0; i < data.length; i++) {
+            ele.innerHTML += `<p>${data[i].pk_idpago}</p> <p>${data[i].formapago}</p>`
+        }
+        console.log( data )
+
+    }).catch(err => console.log(err))
 
     
     
