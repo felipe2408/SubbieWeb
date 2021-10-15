@@ -6,11 +6,9 @@
     <div class="contenedor_imagenes_descritpcion">
         <div class="contenedor_imagenes" id="contenedor_imagen">
         </div>
-        <form action="/" method="post">
-            <input type="file" name="name" value="" id="imagen" />
-            <input type="submit" class="btn btn-success" name="name" value="Guardar Imagen" />
-        </form>
 
+            <input type="file" name="name" value="" id="imagen" />
+            <div class="vista_agregar btn btn-light">+</div>
         <div>Descripción del producto:</div>
         <div class="contenedor_textarea">
             <textarea id="textarea"></textarea>
@@ -19,22 +17,21 @@
     <nav class="contenedor_formulario">
         <form action="/" method="post">
             <select class="dato" name="CATEGORÍA" id="categoria">
+                <option>Categoría</option>
                 <option>Hogar</option>
                 <option>Vehiculos</option>
                 <option>Tecnologia</option>
                 <option>Calzado</option>
                 <option>Otros</option>
             </select>
-            <input type="text" placeholder="UBICACIÓN:" name="name" value="" class="dato" id="ubicacion" />
+            <input type="text"  name="name" value="UBICACIÓN:" class="dato" id="ubicacion" />
             <input type="number" placeholder="PRECIO:" name="name" value="" class="dato" id="precio" />
-            <div class="dato dato_metodo_pago">MÉTODO DE PAGO</div>
+            <div class="dato dato_metodo_pago" id="dato_metodo_pago">MÉTODO DE PAGO</div> 
             <nav class="contenedor_lista">
-                <div class="metodo_pago">nequi <input type="hidden" name="name" value="nequi" id="metodo_pago_0" /></div>
-                <div class="metodo_pago">Daviplata<input type="hidden" name="name" value="Daviplata" id="metodo_pago_1" /></div>
-                <div class="metodo_pago">intercambio<input type="hidden" name="name" value="intercambio" id="metodo_pago_2" /></div>
-            </nav>
-            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago1" />
-            <input type="text" placeholder="Metodo de pago" name="name" value="" class="dato" id="metodopago2" />
+                <div class="metodo_pago">nequi <input type="checkbox"  ame="name" value="nequi" id="metodo_pago_0" /></div>
+                <div class="metodo_pago">Daviplata<input type="checkbox" name="name" value="Daviplata" id="metodo_pago_1" /></div>
+                <div class="metodo_pago">intercambio<input type="checkbox" name="name" value="intercambio" id="metodo_pago_2" /></div>
+            </nav>         
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
 </div>
@@ -45,6 +42,7 @@
     var contador = 0;
     //variable donde se ubican las categorías del producto
     $(document).on('click', '.metodo_pago', function (e) {
+        let metodo_pago1 = 0, metodo_pago2 = 0;
 
         //obtenemos a qué elemento le dieron clic
         elemento = $(".metodo_pago").index(this);
@@ -53,14 +51,16 @@
         var mp1 = document.getElementById(`metodopago1`);
         //metodo de pago 2
         var mp2 = document.getElementById(`metodopago2`);
-
+        
         //asignamos valor al input del método de pago
-        if ((contador % 2) == 0) {
-            mp1.value = $(`#metodo_pago_${elemento}`).val();
-        }
-        else {
-            mp2.value = $(`#metodo_pago_${elemento}`).val();
-        }
+        //if (mp1.spellcheck == true) {
+            
+            //mp1.value = $(`#metodo_pago_${elemento}`).val();
+        //}
+        //else {
+        
+        $('#dato_metodo_pago').append ( ' '+$(`#metodo_pago_${elemento}`).val());
+        //}
         contador++;
 
     });
