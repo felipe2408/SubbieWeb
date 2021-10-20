@@ -1,5 +1,6 @@
 ﻿<link href="~/Content/Publicar.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<add name="Access-Control-Allow-Headers" value="Content-Type, Authorization" />
 <h2>¡PUBLICA TU PRODUCTO!</h2>
 
 <div class="contenedor_principal">
@@ -31,8 +32,9 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
-
+  
     categoria();
+    metodoPago();
     //contador para asignar el valor en el input
     var contador = 0;
     //variable donde se ubican las categorías del producto
@@ -85,14 +87,14 @@
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('categoria')
             for (let i = 0; i < data.length; i++) {
-                ele.innerHTML += `<option>${data[i].formapago}</option>`
+                ele.innerHTML += `<option>${data[i].categoria}</option>`
             }
             console.log(data);
 
         }).catch(err => console.log(err));
-        metodoPago();
+        
             }
-            metodoPago();
+           
     function metodoPago()
     {
         const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
@@ -116,19 +118,48 @@
             $('#contenedor_imagen').append(`<div><img src="${fileReader.result}" alt="Alternate Text" /></div>`)
             //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
             console.log(fileReader.result);
+          
         }
 
     });
     //obtenemos todos los valores para enviarlos al microservicio o controlador
     $('#publicar').click(function () {
-        console.log('textarea ' + $('#textarea').val());
-        console.log('categoria ' + $('#categoria').val());
-        console.log('ubicacacion ' + $('#ubicacion').val());
-        console.log('precio ' + $('#precio').val());
-        console.log('metodopago1 ' + $('#metodopago1').val());
-        console.log('metodopago2 ' + $('#metodopago2').val());
-    }
-    );
+        const idUsuario = localStorage.getItem('id');
+        const idProducto = document.querySelector('#categoria').value;
+        const formaPago = document.querySelector('#metodopago1').value;
+        const descripcionHTML = document.querySelector('#textarea').value;
+        const precioHTML = document.querySelector('#precio').value;
+        const fechaHTML = document.querySelector('#textarea').value; // falta la fecha
+        const img = document.querySelector('#textarea').value; // no esta la variable img
+        const dataIMG = document.querySelector('#textarea').value; // no esta la data de la img
+
+        const datos = {
+            fk_idusuario: idUsuario,
+            fk_idcatproducto: idProducto,
+            fk_idpago: formaPago,
+            descripcion: descripcionHTML,
+            precio: precioHTML,
+            fecha: fechaHTML,
+            nombreimg: img,
+            archivoimg: dataIMG
+        }
+        //console.log(JSON.stringify(datos))
+        const URL = 'https://localhost:44332/api/producto/publicar'
+
+        fetch(URL, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'same-origin', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8', Accept: '*/*'
+
+            },
+            body: JSON.stringify(datos) // body data type must match "Content-Type" header
+        })
+
+    });
+    
 
 
 </script>
