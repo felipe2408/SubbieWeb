@@ -1,0 +1,310 @@
+﻿body {
+    font-family: Maiandra GD;
+}
+.contenedor_de_chats {
+    width: auto;
+    height:750px;
+    display:flex;
+    justify-content:space-between;
+
+}
+.primer_contenedor {
+    position: relative;
+    display: inline;
+    width: 25%;
+    height:720px;
+    float: left;
+    background-color: #E7E9FD;
+    border-top-left-radius: 60px;
+    margin-bottom: 50px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+.primer_contenedor::-webkit-scrollbar {
+    width: 10px;
+    background: #f1f1f1;
+    border-radius: 30px;
+}
+
+.primer_contenedor::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #D8D8D6;
+}
+
+.contenedor_perfil{
+    margin-top:20px;
+    width:100%;
+    font-size:20px;
+    text-align:center;
+}
+.contenedor_imagen{
+    text-align:center;
+
+}
+.contenedor_imagen img {
+    object-fit: cover;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
+.contenedor_chat_plus{
+    margin-bottom:30px;
+    width:70%;
+    margin-left:15%;
+}
+.texto_añadir_chats {
+    width: 80%;
+    text-align: left;
+    font-size: 25px;
+    float: left;
+}
+.simbolos_perfil {
+    font-size: 25px;
+}
+/*chats internos*/
+/*ESTE ES EL CONTENEDOR DE LOS CHATS*/
+.contenedor_chat_visualizacion {
+    width: 80%;
+    height: 80px;
+    margin-left: 10%;
+    background-color: #103FD895;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+/*ESTILO DE LAS IMAGENES*/
+.imagen img{
+    position:relative;
+    float:left;
+    width:60px;
+    height:60px;
+    float:left;
+    border-radius:100%;
+}
+/*CONTENEDOR DE LOS NOMBRES Y MENSAJES PEQUEÑOS*/
+.contenedor_mensaje{
+    position:relative;
+    width:70%;
+    float:right;
+    padding-top:10px;
+}
+.estado_usuario{
+    margin-top:30px;
+    background-color:white;
+    margin-left:20%;
+    width:60%;
+    height:60px;
+    border-radius:40px;
+}
+/*PREVISUALIZACIÓN DE CHAT*/
+.nombre_usuario {
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: -5px;
+    padding: 0;
+}
+.mensaje_previsualizacion {
+    width: 95%;
+    margin-top: 10px;
+    margin-left: 10px;
+    overflow: hidden;
+    color: #B5B5B5;
+    font-size:20px;
+}
+/*CONTENEDOR CHAT GRANDE*/
+.contenedor_dos {
+    position: relative;
+    display: inline;
+    width: 50%;
+    float: left;
+    background-color: #E7E9FD;
+    border-radius: 30px;
+    margin-bottom: 50px;
+    overflow-y: auto;
+    margin-top: 20px;
+    height: 720px;
+}
+.contenedor_dos::-webkit-scrollbar {
+    width: 10px;
+    background: #f1f1f1;
+    border-radius: 30px;
+}
+
+.contenedor_dos::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #D8D8D6;
+}
+.nombre_usuario_comprador {
+    width: 94%;
+    height: 50px;
+    padding-top:10px;
+    padding-left:20px;
+    background-color: white;
+    border: 1px solid #707070;
+    border-radius:60px;
+    margin-left: 3%;
+    margin-top: 10px;
+}
+/*RECEPTOR DE MENSAJE ESTILO*/
+.mensaje_contenedor_receptor{
+    width:94%;
+    margin-left:3%;
+    margin-top:20px;
+}
+.mensaje_contenedor_receptor img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.mensaje_receptor {
+    padding: 10px;
+    padding-left:5%;
+    position: relative;
+    margin-left: 11%;
+    margin-right: 7%;
+    margin-top:-50px;
+    display: inline-block;
+    background-color: #FDE5CD;
+    word-break: break-word;
+    text-align: justify;
+    border-radius: 20px;
+    margin-bottom:20px;
+}
+/*EMISOR DE MENSAJE ESTILO*/
+.mensaje_contenedor_emisor {
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 20px;
+}
+
+.mensaje_contenedor_emisor img {
+    position:absolute;
+    display:inline-block;
+    width: 50px;
+    height: 50px;
+    left:89%;
+    border-radius: 100%; 
+}
+.mensaje_emisor {
+    padding: 10px;
+    padding-right: 5%;
+    position: relative;
+    margin-left: 6%;
+    margin-right:11%;
+    display: inline-block;
+    background-color: #BAF2D2;
+    word-break: break-word;
+    text-align: justify;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+form{
+    width:90%;
+    height:60px;
+    background-color:white;
+    border-radius:25px;
+    position:absolute;
+    margin-left:5%;
+    bottom:10px;
+
+}
+form textarea{
+    min-width:80%!important;
+    height:60px;
+    background-color:white;
+    border-top-left-radius:25px;
+    border-bottom-left-radius:25px;
+    resize:none;
+    outline:none;
+    border:0px;
+    padding:5px;
+}
+textarea::-webkit-scrollbar {
+    width: 10px;
+    background: #f1f1f1;
+    border-radius: 30px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #D8D8D6;
+}
+form input{
+    position:relative;
+    float:right;
+}
+/*TERCER CONTENEDOR ERFIL DE USUARIOS TERCEROS*/
+.contenedor_tres {
+    width: 20%;
+    height: 720px;
+    background-color: #803B9680;
+    border-radius: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 20px;
+}
+.contenedor_imagen_tercera_parte{
+    position:relative;
+    float:left;
+    text-align:center;
+    width:100%;
+    height:120px;
+}
+.contenedor_tres .imagen {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+.contenedor_botones_grandes{
+    width:100%;
+    height:60px;
+    position:relative;
+    float:left;
+    display:flex;
+    justify-content:space-around;
+    margin-top:60px;
+    margin-bottom:70px;
+}
+.archivos {
+    background-color: #E7E9FD;
+    width: 45%;
+    height: 70px;
+    border-radius:20px;
+    padding:5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.archivos_botones{
+    width:100%;
+    margin-top:20px;
+    height:60px;
+    border-radius:20px;
+    background-color:red;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.archivos_botones:nth-child(3) {
+    margin-top: 35px !important;
+    background-color: #FDE5CD;
+}
+.archivos_botones:nth-child(4) {
+    background-color: #BAF2D2;
+}
+.archivos_botones:nth-child(5) {
+    background-color: #E7E9FD;
+}
+.archivos_botones:nth-child(6) {
+    background-color: #B84C93;
+}
