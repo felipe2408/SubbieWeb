@@ -269,6 +269,16 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="img\001-home.png" />
+    <Content Include="img\002-publication.png" />
+    <Content Include="img\003-box.png" />
+    <Content Include="img\004-chat.png" />
+    <Content Include="img\005-frequentist-statistics.png" />
+    <Content Include="img\006-emergency-exit.png" />
+    <Content Include="img\007-notification.png" />
+    <Content Include="img\008-gear.png" />
+    <Content Include="img\009-post-stamp.png" />
+    <Content Include="img\010-buscando.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
