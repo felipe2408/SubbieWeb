@@ -308,3 +308,6 @@ form input{
 .archivos_botones:nth-child(6) {
     background-color: #B84C93;
 }
+a{
+    text-decoration: none;
+}
