@@ -138,9 +138,9 @@
         const formaPago = document.querySelector('#metodopago1').value;
         const descripcionHTML = document.querySelector('#textarea').value;
         const precioHTML = document.querySelector('#precio').value;
-        const fechaHTML = document.querySelector(fecha).value; // falta la fecha
-        const img = document.querySelector(nombreImagen).value; // no esta la variable img
-        const dataIMG = document.querySelector(imagenes).value; // no esta la data de la img
+        const fechaHTML = fecha; // falta la fecha
+        const img = imagenes; // no esta la variable img
+        const dataIMG = nombreImagen; // no esta la data de la img
 
         const datos = {
             fk_idusuario: idUsuario,
@@ -152,10 +152,12 @@
             nombreimg: img,
             archivoimg: dataIMG
         }
-        //console.log(JSON.stringify(datos))
-        const URL = 'https://localhost:44332/api/producto/publicar'
+        
+        console.log(JSON.stringify(datos))
+        
+        const URL = 'http://localhost:44332/api/producto/publicar'
+
         fetch(URL, {
-            async: false,
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'same-origin', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -165,6 +167,7 @@
             },
             body: JSON.stringify(datos) // body data type must match "Content-Type" header
         })
+       
     });
     
 </script>
