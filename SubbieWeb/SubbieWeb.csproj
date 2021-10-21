@@ -242,6 +242,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Chat.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Publicar.css" />
@@ -269,6 +270,16 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="img\001-home.png" />
+    <Content Include="img\002-publication.png" />
+    <Content Include="img\003-box.png" />
+    <Content Include="img\004-chat.png" />
+    <Content Include="img\005-frequentist-statistics.png" />
+    <Content Include="img\006-emergency-exit.png" />
+    <Content Include="img\007-notification.png" />
+    <Content Include="img\008-gear.png" />
+    <Content Include="img\009-post-stamp.png" />
+    <Content Include="img\010-buscando.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -320,6 +331,7 @@
     <Content Include="Views\Splash\Login.cshtml" />
     <Content Include="Views\Splash\Registrer.cshtml" />
     <Content Include="Views\Shared\_LayaoutLoginRegistrer.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

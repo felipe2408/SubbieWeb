@@ -2,6 +2,7 @@
     overflow: scroll;
     font-weight: 300;
     font-family: Maiandra GD;
+    height: 100%;
 }
 
 /*
@@ -52,13 +53,15 @@
     padding: 0.875rem 1.25rem;
 
 }
-.menu {
+.menu{
     width: 10rem;
 }
 /*INICIO CSS index*/
-.barra_principal{
+.barra_principal {
     padding: 10px;
+    min-height: 95vh;
     margin: 10px;
+    float: left;
 }
 #buscar {
     border-radius: 10px;
@@ -69,6 +72,16 @@
 }
 a{
     text-decoration: none;
+}
+.links {
+    color: white;
+}
+#salir {
+    position: absolute; /*El div será ubicado con relación a la pantalla*/
+    left: 0px; /*A la derecha deje un espacio de 0px*/
+    right: 0px; /*A la izquierda deje un espacio de 0px*/
+    bottom: 0px; /*Abajo deje un espacio de 0px*/
+    height: 50px; /*alto del div*/
 }
 /*FIN CSS index*/
 

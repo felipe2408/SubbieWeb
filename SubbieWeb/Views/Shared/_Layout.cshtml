@@ -8,32 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.title Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <a href="https://www.freepik.com" title="Freepik"></a><a href="https://www.flaticon.es/" title="Flaticon"></a>
     @Scripts.Render("~/Conten/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div id="contenedor_barra" class="d-flex contenedor_barraP">
-        <div class="barra-lateral">
-            <div class="logoS">
-                <h4>UBBIE</h4>
-            </div>
-            <div class="menu">
-                <ul class="nav navbar-nav" style="color:white">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <br />
-                    <li>@Html.ActionLink("Publicar", "Publicar", "Home")</li>
-                    <br>
-                    <li>@Html.ActionLink("Productos", "Contact", "Home")</li>
-                    <br />
-                    <li>@Html.ActionLink("Chat", "Index", "Home")</li>
-                    <br />
-                    <li>@Html.ActionLink("Estadisticas", "About", "Home")</li>
-                    <br>
-                    <li>@Html.ActionLink("Salir", "Contact", "Home")</li>
-                    <br>
-                    <li>@Html.ActionLink("PRUEBA", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div id="contenedor_barra" class="barra-lateral d-flex align-items-start flex-column bd-highlight mb-3">
+        <div class="logoS p-2 bd-highlight">
+            <h4 style="color: #10ffce">ubbie</h4>
+        </div>
+        <div class="menu p-2 bd-highlight">
+            <ul class="nav navbar-nav" style="font-size: 20px">
+                <li><img src="~/img/001-home.png" width="20" height="20" /> @Html.ActionLink("Inicio", "Index", "Home", new { @class = "links" })</li>
+                <br />
+                <li><img src="~/img/002-publication.png" width="20" height="20" />@Html.ActionLink("Publicar", "Publicar", "Home", new { @class = "links" })</li>
+                <br>
+                <li><img src="~/img/003-box.png" width="20" height="20" />@Html.ActionLink("Productos", "Contact", "Home", new { @class = "links" })</li>
+                <br />
+                <li><img src="~/img/004-chat.png" width="20" height="20" />@Html.ActionLink("Chat", "Chat", "Home", new { @class = "links" })</li>
+                <br />
+                <li><img src="~/img/005-frequentist-statistics.png" width="20" height="20" />@Html.ActionLink("Estadisticas", "About", "Home", new { @class = "links" })</li>
+            </ul>
+        </div>
+        <div class="nav navbar-nav mt-auto p-2 bd-highlight" style="font-size: 20px">
+            <li><img src="~/img/006-emergency-exit.png" width="20" height="20" />@Html.ActionLink("Salir", "Contact", "Home", new { @class = "links" })</li>
         </div>
     </div>
 

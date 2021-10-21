@@ -189,3 +189,6 @@ textarea::-webkit-scrollbar-thumb {
     color: #671faf;
     font-size: 18px;
 }
+a{
+    text-decoration: none!important;
+}

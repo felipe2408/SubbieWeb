@@ -29,10 +29,16 @@
 
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
+    </nav>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
-  
+    //variable que contiene las imágenes
+    var imagenes = '';
+    var nombreImagen = ''
+    //variable que contiene la fecha
+    var fecha = '';
+   
     categoria();
     metodoPago();
     //contador para asignar el valor en el input
@@ -48,33 +54,26 @@
         var mp1 = document.getElementById(`metodopago1`);
         //metodo de pago 2 input hidden
         var mp2 = document.getElementById(`metodopago2`);
-        if (mp1.value == '' && mp2.value == '') {
+        if (mp1.value == '') {
             contador = 0;
         }
        
-        if (contador == 0 || mp1.value == '' && mp1.value != mp2.value && $(`#metodo_pago_${elemento}`).val() != mp2.value ) {
+        if (contador == 0 || mp1.value == '') {
+            //asignamos el método de pago a la variable
             mp1.value = $(`#metodo_pago_${elemento}`).val();
-
+            //limpiamos vista e imprimimos
             $('#dato_metodo_pago').empty();
-            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' );
         }
-        else if ((contador == 1 && $(`#metodo_pago_${elemento}`).val() != mp1.value) || mp2.value == '' && mp2.value != mp1.value && $(`#metodo_pago_${elemento}`).val() != mp1.value) {
-            mp2.value = $(`#metodo_pago_${elemento}`).val();
-            $('#dato_metodo_pago').empty();
-            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
-        }
+        //aqui se limpia la variable si dan clic en el método de pago
         else if (contador > 1 && mp1.value == $(`#metodo_pago_${elemento}`).val() ) {
             mp1.value = '';
             $('#dato_metodo_pago').empty();
-            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
+            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' );
         }
-        else if (contador > 1 && mp2.value == $(`#metodo_pago_${elemento}`).val()  ) {
-            mp2.value = '';
-            $('#dato_metodo_pago').empty();
-            $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' + mp2.value);
-        }
-        else if (contador > 2 && mp1.value != $(`#metodo_pago_${elemento}`).val() && mp2.value != $(`#metodo_pago_${elemento}`).val()) {
-            alert('¡Ya se han seleccionado los dos métodos de pago permitidos! ¡Si se selecciona un método de pago ya establecido este se eliminará!');
+        //si seleccionan un segundo método de pago
+        else if (contador > 2 && mp1.value != $(`#metodo_pago_${elemento}`).val()   ) {
+            alert('¡Ya se han seleccionado los métodos de pago permitidos! ¡Si se selecciona un método de pago ya establecido este se eliminará!');
         }
         
         contador++;
@@ -108,19 +107,27 @@
         }).catch(err => console.log(err));
 
     }
+ 
+    //obtenemos la fecha actual
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+    fecha = today;
+        
     //funcion que permite subir imagenes
     $('#imagen').on("change", function () {
         var imagen = $(this)[0].files[0];
         console.log(imagen.name);
+        nombreImagen = imagen.name;
         var fileReader = new FileReader();
         fileReader.readAsDataURL(imagen);
         fileReader.onload = function () {
             $('#contenedor_imagen').append(`<div><img src="${fileReader.result}" alt="Alternate Text" /></div>`)
             //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
             console.log(fileReader.result);
-
-
-          
+            imagenes = imagenes + fileReader.result;
         }
 
     });
@@ -131,9 +138,10 @@
         const formaPago = document.querySelector('#metodopago1').value;
         const descripcionHTML = document.querySelector('#textarea').value;
         const precioHTML = document.querySelector('#precio').value;
-        const fechaHTML = document.querySelector('#textarea').value; // falta la fecha
-        const img = document.querySelector('#textarea').value; // no esta la variable img
-        const dataIMG = document.querySelector('#textarea').value; // no esta la data de la img
+        const fechaHTML = document.querySelector(fecha).value; // falta la fecha
+        const img = document.querySelector(nombreImagen).value; // no esta la variable img
+        const dataIMG = document.querySelector(imagenes).value; // no esta la data de la img
+
         const datos = {
             fk_idusuario: idUsuario,
             fk_idcatproducto: idProducto,
@@ -147,6 +155,7 @@
         //console.log(JSON.stringify(datos))
         const URL = 'https://localhost:44332/api/producto/publicar'
         fetch(URL, {
+            async: false,
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'same-origin', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
