@@ -118,6 +118,8 @@
             $('#contenedor_imagen').append(`<div><img src="${fileReader.result}" alt="Alternate Text" /></div>`)
             //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
             console.log(fileReader.result);
+
+
           
         }
 
@@ -132,7 +134,6 @@
         const fechaHTML = document.querySelector('#textarea').value; // falta la fecha
         const img = document.querySelector('#textarea').value; // no esta la variable img
         const dataIMG = document.querySelector('#textarea').value; // no esta la data de la img
-
         const datos = {
             fk_idusuario: idUsuario,
             fk_idcatproducto: idProducto,
@@ -145,7 +146,6 @@
         }
         //console.log(JSON.stringify(datos))
         const URL = 'https://localhost:44332/api/producto/publicar'
-
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'same-origin', // no-cors, *cors, same-origin
@@ -153,13 +153,9 @@
             credentials: 'same-origin', // include, *same-origin, omit
             headers: {
                 'Content-Type': 'application/json; charset=utf-8', Accept: '*/*'
-
             },
             body: JSON.stringify(datos) // body data type must match "Content-Type" header
         })
-
     });
     
-
-
 </script>
