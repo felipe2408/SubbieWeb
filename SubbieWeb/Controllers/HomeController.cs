@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SubbieWeb.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Controller
     {
         [Authorize]
@@ -26,6 +26,12 @@ namespace SubbieWeb.Controllers
 
             return View();
         }
+        public ActionResult Productos()
+        {
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page a.";
