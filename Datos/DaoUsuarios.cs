@@ -41,6 +41,7 @@ namespace Datos
 
         public UUsuarios iniciarS(string correo, string password)
         {
+           
             UUsuarios user = new UUsuarios();
             using (var db = new DBMapeo())
             {
@@ -49,7 +50,9 @@ namespace Datos
                 {
                     return null;
                 }
+               
             }
+            
             return user;
         }
         public void eliminarusuario(int id)

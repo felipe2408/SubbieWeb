@@ -1,5 +1,6 @@
 ﻿using LogicaDeNegocios;
 using Microsoft.AspNetCore.Cors;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using Utilitarios;
@@ -53,8 +54,10 @@ namespace SubbieWeb.Controllers.Servicios
         [HttpGet]
         public IHttpActionResult iniciarsesion(string correo, string password)
         {
+            bool confirmar = true;
             if (!ModelState.IsValid)
             {
+                confirmar = false;
                 string error = "Datos incorrectos, ";
                 foreach (var state in ModelState)
                 {
@@ -63,12 +66,20 @@ namespace SubbieWeb.Controllers.Servicios
                         error += $"{item.ErrorMessage}";
                     }
                 }
+
                 return BadRequest(error);
             }
             UUsuarios user = new LUUsuarios().iniciarS(correo, password);
+            sesionOK(confirmar);
             return Ok(user);
         }
+        public bool sesionOK(bool estado)
+        {
+            return estado;
+        }
+
         [Route("eliminarusuario")]
+        
         [HttpDelete]
         public IHttpActionResult eliminarusuario(int id)
         {
@@ -105,6 +116,11 @@ namespace SubbieWeb.Controllers.Servicios
             }
             UUsuarios userM = new LUUsuarios().modificar(user);
             return Ok(userM);
+        }
+
+        public static implicit operator List<object>(UsuariosController v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
