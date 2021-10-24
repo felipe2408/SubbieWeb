@@ -246,6 +246,7 @@
     <Content Include="Content\Chat.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\Productos.css" />
     <Content Include="Content\Publicar.css" />
     <Content Include="Content\Register.css" />
     <Content Include="favicon.ico" />
@@ -333,6 +334,7 @@
     <Content Include="Views\Splash\Registrer.cshtml" />
     <Content Include="Views\Shared\_LayaoutLoginRegistrer.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Home\Productos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
