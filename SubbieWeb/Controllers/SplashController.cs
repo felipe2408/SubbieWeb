@@ -7,26 +7,45 @@ using Utilitarios;
 using Datos;
 using LogicaDeNegocios;
 using SubbieWeb.Controllers.Servicios;
+using Datos;
 namespace SubbieWeb.Controllers
 
 {
     public class SplashController : Controller
     {
+       
+       
         public ActionResult Login()
         {
-           
-            ViewBag.Messague = "LOGIN ";
+        
             return View();
         }
         [HttpPost]
-        public ActionResult Login(UUsuarios usuario)
+        public ActionResult Login(string correo,string password)
         {
-            UsuariosController data = new UsuariosController();
-            if (data.sesionOK(false))
-            {
-                return RedirectToAction("Login", "Splash");
+            try {
+
+                UUsuarios user = new UUsuarios();
+                using (var db = new DBMapeo())
+                {
+                    user = db.usuarios.Where(x => x.Correo.Equals(correo) && x.Password.Equals(password)).FirstOrDefault();
+                    if (user == null)
+                    {
+
+                        return View();
+                    }
+                    Session["User"] = user;
+                }
+                return RedirectToAction("Index","Home");
+
             }
-            return View(usuario);
+            catch (Exception ex) {
+                ViewBag.Error = ex.Message;
+                return View();
+            
+            }
+           
+   
 
         }
        

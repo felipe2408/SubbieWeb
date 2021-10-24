@@ -220,6 +220,7 @@
     <Compile Include="Controllers\Servicios\PublicarController.cs" />
     <Compile Include="Controllers\Servicios\UsuariosController.cs" />
     <Compile Include="Controllers\SplashController.cs" />
+    <Compile Include="Filters\VerificarSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

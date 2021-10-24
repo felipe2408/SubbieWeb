@@ -57,7 +57,6 @@ namespace SubbieWeb.Controllers.Servicios
             bool confirmar = true;
             if (!ModelState.IsValid)
             {
-                confirmar = false;
                 string error = "Datos incorrectos, ";
                 foreach (var state in ModelState)
                 {
@@ -70,8 +69,13 @@ namespace SubbieWeb.Controllers.Servicios
                 return BadRequest(error);
             }
             UUsuarios user = new LUUsuarios().iniciarS(correo, password);
+            if (user == null)
+            {
+                confirmar = false;
+            }
             sesionOK(confirmar);
             return Ok(user);
+
         }
         public bool sesionOK(bool estado)
         {

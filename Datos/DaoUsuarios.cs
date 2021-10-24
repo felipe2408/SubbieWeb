@@ -7,7 +7,7 @@ using Utilitarios;
 using System.Data.Entity;
 namespace Datos
 {
-   public class DaoUsuarios
+    public class DaoUsuarios
     {
         public List<UUsuarios> obtenerusarios()
         {
@@ -25,14 +25,14 @@ namespace Datos
             {
                 UUsuarios userC = db.usuarios.Where(x => x.Correo.Equals(usuarioR.Correo)).FirstOrDefault();
 
-                if(userC == null)
+                if (userC == null)
                 {
                     db.usuarios.Add(usuarioR);
                     db.SaveChanges();
-                    valor =  true;
+                    valor = true;
                 }
                 else
-                {                  
+                {
                     valor = false;
                 }
                 return valor;
@@ -45,16 +45,20 @@ namespace Datos
             UUsuarios user = new UUsuarios();
             using (var db = new DBMapeo())
             {
-                user =  db.usuarios.Where(x => x.Correo.Equals(correo) && x.Password.Equals(password)).FirstOrDefault();
-                if(user == null)
+                user = db.usuarios.Where(x => x.Correo.Equals(correo) && x.Password.Equals(password)).FirstOrDefault();
+                if (user == null)
                 {
                     return null;
                 }
-               
+
             }
-            
+
             return user;
         }
+        public bool Comprobacion(bool estado) {
+            return estado;
+        }
+
         public void eliminarusuario(int id)
         {
             UUsuarios user = new UUsuarios();
