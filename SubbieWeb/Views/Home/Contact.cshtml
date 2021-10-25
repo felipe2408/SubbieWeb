@@ -1,17 +1,47 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<style>
+    .contenedor-productos {
+        border-radius: 25px;
+        margin: 10px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 23%;
+        min-height: 70vh;
+    }
+</style>
+<link href="~/Content/Site.css" rel="stylesheet"/>
+<h6 style="margin: 20px">¡MIRA LOS PRODUCTOS QUE DESEAS!</h6>
+<div style="margin:20px">
+    <form class="d-flex position-relative">
+        <!--<img class="position-absolute icon_buscar" src="~/img/001-home.png" width="15" height="15" />-->
+        <input id="buscar" class="form-control me-2" type="search" placeholder=" Search" aria-label="Search" />
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
+            <h5>Producto 1</h5>
+            Espacio para imagen
+            Descripción
+            <p><a class="botones-principales" href="">VER MÁS</a></p>
+        </div>
+        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
+            <h5>Producto 2</h5>
+            Espacio para imagen
+            Descripción
+            <p><a class="botones-principales" href="">VER MÁS</a></p>
+        </div>
+        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
+            <h5>Producto 3</h5>
+            Espacio para imagen
+            Descripción
+            <p><a class="botones-principales" href="">VER MÁS</a></p>
+        </div>
+        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
+            <h5>Producto 4</h5>
+            Espacio para imagen
+            Descripción
+            <p><a class="botones-principales" href="">VER MÁS</a></p>
+        </div>
+    </div>
+</div>
