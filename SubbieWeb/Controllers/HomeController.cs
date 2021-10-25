@@ -26,7 +26,6 @@ namespace SubbieWeb.Controllers
         }
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page a.";
 
             return View();
         }
