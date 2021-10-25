@@ -335,6 +335,8 @@
     <Content Include="Views\Shared\_LayaoutLoginRegistrer.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Views\Home\Productos.cshtml" />
+    <Content Include="Views\Home\InfoUsuarios.cshtml" />
+    <Content Include="Views\Home\Estadisticas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

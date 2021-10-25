@@ -38,5 +38,15 @@ namespace SubbieWeb.Controllers
 
             return View();
         }
+        public ActionResult Estadisticas()
+        {
+            return View();
+        }
+        public ActionResult InfoUsuarios()
+        {
+
+            return View();
+        }
+
     }
 }
