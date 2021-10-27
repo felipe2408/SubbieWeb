@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoCategoriaProducto.cs" />
+    <Compile Include="DaoInfoUsuarios.cs" />
     <Compile Include="DaoMetodoPago.cs" />
     <Compile Include="DaoPublicaciones.cs" />
     <Compile Include="DaoUsuarios.cs" />

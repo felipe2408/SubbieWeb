@@ -14,23 +14,29 @@
 </header>
 <body>
     <div>
-        <input type="text" placeholder="Ingresa tus nombres" class="form-control" />
-        <br />
-        <input type="text" placeholder="Ingresa tus Apellidos" class="form-control" />
-        <br />
-        <label>Tipo de identificación</label>
-        <select>
-            <option value="CC">CC</option>
-            <option value="TI">TI</option>
-            <option value="PA">PA</option>
-        </select>
-        <input type="text" placeholder="Numero de identificación" class="form-control"/>
-        <br />
-        <input type="text" placeholder="Telefono" class="form-control" />
-        <br />
-        <input type="text" placeholder="Direccion" class="form-control" />
-        <br />
-        <input type="text" placeholder="Ciudad" class="form-control" />
+        <form>
+            <input type="text" placeholder="Ingresa tus nombres" class="form-control" id="nombres" />
+            <br />
+            <input type="text" placeholder="Ingresa tus Apellidos" class="form-control" id="apellidos" />
+            <br />
+            <label>Tipo de identificación</label>
+            <select>
+                <option value="CC">CC</option>
+                <option value="TI">TI</option>
+                <option value="PA">PA</option>
+            </select>
+            <input type="text" placeholder="Numero de identificación" class="form-control" id="numId" />
+            <br />
+            <input type="text" placeholder="Telefono" class="form-control" id="telefono" />
+            <br />
+            <input type="text" placeholder="Direccion" class="form-control" id="direccion"/>
+            <br />
+            <input type="text" placeholder="Ciudad" class="form-control" id="ciudad"/>
+
+
+
+        </form>
+        
     </div>
     <div>
         <div class="contenedor_principal">
@@ -59,6 +65,6 @@
 
     </div>
 
-
+    <script src="~/Scripts/ValidacionesImportanes.js"></script>
 
 </body>

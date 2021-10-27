@@ -11,17 +11,17 @@
 <div>
     <div class="contenedor_principal">
         <div class="texto_bienvenidos">
-           
+
         </div>
 
         <div class="form-container col-lg-12">
             <div class="titulo_inicia_sesion">
                 INGRESAR CUENTA
             </div>
-            <form action="@Url.Content("~/Splash/Login")" method="post"  class="contenedor_formulario">
-                <input type="email" placeholder="Correo electrónico" name="correo" class="form-control email" required>
-                <input type="password" placeholder="Password" name="password" class="form-control password" required>
-                <input type="submit" value="Ingresar" class="Ingresar botones-principales" required>
+            <form action="@Url.Content("~/Splash/Login")" method="post" class="contenedor_formulario" id="login">
+                <input type="email" placeholder="Correo electrónico" name="correo" class="form-control" id="email" required>
+                <input type="password" placeholder="Password" name="password" class="form-control" id="password" required>
+                <input type="submit" value="Ingresar" class="botones-principales" required>
             </form>
             <div class="contenedor_iconos">
                 <div class="iconos"></div>
@@ -36,5 +36,6 @@
         <img src="~/img/Trazado -2.png" />
     </footer>
 
+    <script src="~/Scripts/ValidacionUsuario.js"></script>
 
 </div>

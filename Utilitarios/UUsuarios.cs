@@ -16,6 +16,7 @@ namespace Utilitarios
         private int id;
         private string correo;
         private string password;
+        private bool usuarioNuevo;
 
         [Key]
         [Column("id")]
@@ -24,5 +25,7 @@ namespace Utilitarios
         public string Correo { get => correo; set => correo = value; }
         [Column("password")]
         public string Password { get => password; set => password = value; }
+        [Column("usuarioNuevo")]
+        public bool UsuarioNuevo { get => usuarioNuevo; set => usuarioNuevo = value; }
     }
 }

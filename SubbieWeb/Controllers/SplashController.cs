@@ -28,13 +28,21 @@ namespace SubbieWeb.Controllers
                 UUsuarios user = new UUsuarios();
                 using (var db = new DBMapeo())
                 {
+
                     user = db.usuarios.Where(x => x.Correo.Equals(correo) && x.Password.Equals(password)).FirstOrDefault();
+                    var comprobar = user.UsuarioNuevo;
+
                     if (user == null)
                     {
-
                         return View();
                     }
                     Session["User"] = user;
+                    if (comprobar == false)
+                    {
+                        return RedirectToAction("InfoUsuarios", "Home");
+                        
+                    }
+                   
                 }
                 return RedirectToAction("Index","Home");
 
