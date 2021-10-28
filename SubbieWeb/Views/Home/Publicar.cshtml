@@ -114,8 +114,9 @@
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
-    today = mm + '/' + dd + '/' + yyyy;
-    fecha = today;
+    today = dd + '-' + mm + '-' + yyyy ;
+    fecha = today + '::10:50';
+    console.log(fecha)
         
     //funcion que permite subir imagenes
     $('#imagen').on("change", function () {
@@ -134,14 +135,14 @@
     });
     //obtenemos todos los valores para enviarlos al microservicio o controlador
     $('#publicar').click(function () {
-        const idUsuario = localStorage.getItem('id');
-        const idProducto = document.querySelector('#categoria').value;
-        const formaPago = document.querySelector('#metodopago1').value;
-        const descripcionHTML = document.querySelector('#textarea').value;
-        const precioHTML = document.querySelector('#precio').value;
-        const fechaHTML = fecha; // falta la fecha
-        const img = imagenes; // no esta la variable img
-        const dataIMG = nombreImagen; // no esta la data de la img
+        const idUsuario = 5;//localStorage.getItem('id');
+        const idProducto = 'prueba';//document.querySelector('#categoria').value;
+        const formaPago = 'prueba';//document.querySelector('#metodopago1').value;
+        const descripcionHTML = 'hola';//document.querySelector('#textarea').value;
+        const precioHTML = 123;//document.querySelector('#precio').value;
+        const fechaHTML = '10:50:00-05:00'//fecha; // falta la fecha
+        const img = 'prueba';//imagenes; // no esta la variable img
+        const dataIMG = 'prueba';//nombreImagen; // no esta la data de la img
 
         const datos = {
             fk_idusuario: idUsuario,
@@ -156,11 +157,11 @@
         
         console.log(JSON.stringify(datos))
         
-        const URL = 'http://localhost:44332/api/producto/publicar'
+        const URL = 'https://localhost:44332/api/producto/publicar'
 
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'same-origin', // no-cors, *cors, same-origin
+            mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: 'same-origin', // include, *same-origin, omit
             headers: {
