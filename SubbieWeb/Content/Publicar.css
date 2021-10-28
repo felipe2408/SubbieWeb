@@ -193,3 +193,12 @@ textarea::-webkit-scrollbar-thumb {
 a{
     text-decoration: none!important;
 }
+/*BOTÓN ALERTA*/
+
+#alerta {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 600px;
+    z-index: 200;
+}
