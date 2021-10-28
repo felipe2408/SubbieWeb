@@ -14,26 +14,26 @@
 </header>
 <body>
     <div>
-        <form>
-            <input type="text" placeholder="Ingresa tus nombres" class="form-control" id="nombres" />
+        <form id="info">
+            <input type="text" placeholder="Ingresa tus nombres" class="form-control nombres"  />
             <br />
-            <input type="text" placeholder="Ingresa tus Apellidos" class="form-control" id="apellidos" />
+            <input type="text" placeholder="Ingresa tus Apellidos" class="form-control apellidos"  />
             <br />
             <label>Tipo de identificación</label>
-            <select>
+            <select class="tipoID">
                 <option value="CC">CC</option>
                 <option value="TI">TI</option>
                 <option value="PA">PA</option>
             </select>
-            <input type="text" placeholder="Numero de identificación" class="form-control" id="numId" />
+            <input type="text" placeholder="Numero de identificación" class="form-control numId"  required />
             <br />
-            <input type="text" placeholder="Telefono" class="form-control" id="telefono" />
+            <input type="text" placeholder="Telefono" class="form-control telefono" required />
             <br />
-            <input type="text" placeholder="Direccion" class="form-control" id="direccion"/>
+            <input type="text" placeholder="Direccion" class="form-control direccion" required />
             <br />
-            <input type="text" placeholder="Ciudad" class="form-control" id="ciudad"/>
-
-
+            <input type="text" placeholder="Ciudad" class="form-control ciudad" required />
+            <br />
+            <input type="button" value="Guardar" class="Guardar botones-principales">
 
         </form>
         
@@ -54,7 +54,7 @@
                 </div>
                 <br />
                 <form class="contenedor_formulario">
-                     <input type="submit" value="Guardar Información" class="Guardar botones-principales" required>
+                    
                 </form>
 
             </div>
@@ -66,5 +66,6 @@
     </div>
 
     <script src="~/Scripts/ValidacionesImportanes.js"></script>
+    <script src="~/Scripts/guardarInfoUsuarios.js"></script>
 
 </body>

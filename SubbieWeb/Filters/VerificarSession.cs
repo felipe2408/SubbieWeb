@@ -22,6 +22,7 @@ namespace SubbieWeb.Filters
                     if (filterContext.Controller is SplashController == false)
                     {
                         filterContext.HttpContext.Response.Redirect("/Splash/Login");
+                   
                     }
                 }
 

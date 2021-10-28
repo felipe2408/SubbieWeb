@@ -139,11 +139,12 @@
         const formaPago = document.querySelector('#metodopago1').value;
         const descripcionHTML = document.querySelector('#textarea').value;
         const precioHTML = document.querySelector('#precio').value;
-        const fechaHTML = fecha; // falta la fecha
-        const img = imagenes; // no esta la variable img
-        const dataIMG = nombreImagen; // no esta la data de la img
+        const fechaHTML = document.querySelector('#textarea').value; // falta la fecha
+        const img = document.querySelector('#textarea').value; // no esta la variable img
+        const dataIMG = document.querySelector('#textarea').value; // no esta la data de la img
 
-        const datos = {
+        /*
+         *  const datos = {
             fk_idusuario: idUsuario,
             fk_idcatproducto: idProducto,
             fk_idpago: formaPago,
@@ -153,10 +154,24 @@
             nombreimg: img,
             archivoimg: dataIMG
         }
+         * 
+         * 
+         * */
+        
+        const datos = {
+            fk_idusuario: 1,
+            fk_idcatproducto: 1,
+            fk_idpago: 1,
+            descripcion: 'hola',
+            precio: '2500',
+            fecha: '2004-10-19 10:23:54',
+            nombreimg: 'nom',
+            archivoimg: 'asas'
+        }
         
         console.log(JSON.stringify(datos))
         
-        const URL = 'http://localhost:44332/api/producto/publicar'
+        const URL = 'https://localhost:44332/api/producto/publicar'
 
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.

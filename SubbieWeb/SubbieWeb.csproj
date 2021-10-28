@@ -305,6 +305,7 @@
     <Content Include="img\Trazado 5.png" />
     <Content Include="img\Trazado 6%402x.png" />
     <Content Include="img\Trazado 6.png" />
+    <Content Include="Scripts\guardarInfoUsuarios.js" />
     <Content Include="Scripts\ValidacionesImportanes.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
