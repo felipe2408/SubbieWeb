@@ -26,7 +26,6 @@
             <nav class="contenedor_lista" id="contenedor_lista">
             </nav>
             <input type="hidden" id="metodopago1" name="name" value="" />
-            <input type="hidden" id="metodopago2" name="name" value="" />
 
             <input type="button" name="name" value="PUBLICAR" class="publicar" id="publicar" />
         </form>
@@ -39,7 +38,8 @@
     var nombreImagen = ''
     //variable que contiene la fecha
     var fecha = '';
-   
+   //variable que contiene id metodo de pago
+    var metPago;
     categoria();
     metodoPago();
     //contador para asignar el valor en el input
@@ -53,8 +53,7 @@
 
         //metodo de pago 1 input hidden
         var mp1 = document.getElementById(`metodopago1`);
-        //metodo de pago 2 input hidden
-        var mp2 = document.getElementById(`metodopago2`);
+
         if (mp1.value == '') {
             contador = 0;
         }
@@ -62,6 +61,7 @@
         if (contador == 0 || mp1.value == '') {
             //asignamos el método de pago a la variable
             mp1.value = $(`#metodo_pago_${elemento}`).val();
+            metPago = $(`#metodo_pago__${elemento}`).val();
             //limpiamos vista e imprimimos
             $('#dato_metodo_pago').empty();
             $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' );
@@ -69,6 +69,7 @@
         //aqui se limpia la variable si dan clic en el método de pago
         else if (contador > 1 && mp1.value == $(`#metodo_pago_${elemento}`).val() ) {
             mp1.value = '';
+            metPago = '';
             $('#dato_metodo_pago').empty();
             $('#dato_metodo_pago').append('MÉTODO DE PAGO ' + mp1.value + ' ' );
         }
@@ -87,7 +88,7 @@
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('categoria')
             for (let i = 0; i < data.length; i++) {
-                ele.innerHTML += `<option>${data[i].categoria}</option>`
+                ele.innerHTML += `<option value ="${data[i].pk_idcatproducto}">${data[i].categoria}</option>`
             }
             console.log(data);
 
@@ -101,7 +102,7 @@
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('contenedor_lista')
             for (let i = 0; i < data.length; i++) {
-                ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  name="name" value="${data[i].formapago}" id="metodo_pago_${i}" /></div>`
+                ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  name="name" value="${data[i].formapago}" id="metodo_pago_${i}" /><input type="hidden"  name="name" value="${data[i].pk_idpago}" id="metodo_pago__${i}" /></div>`
             }
             console.log(data);
 
@@ -114,15 +115,15 @@
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
-    today = dd + '-' + mm + '-' + yyyy ;
-    fecha = today + '::10:50';
-    console.log(fecha)
+    today = yyyy + '-' + mm + '-' + dd ;
+    fecha = today + ' 10:23:54';
+    console.log(fecha);
         
     //funcion que permite subir imagenes
     $('#imagen').on("change", function () {
         var imagen = $(this)[0].files[0];
         console.log(imagen.name);
-        nombreImagen = imagen.name;
+        nombreImagen = nombreImagen + "data:" + imagen.name;
         var fileReader = new FileReader();
         fileReader.readAsDataURL(imagen);
         fileReader.onload = function () {
@@ -135,22 +136,38 @@
     });
     //obtenemos todos los valores para enviarlos al microservicio o controlador
     $('#publicar').click(function () {
-        const idUsuario = 5;//localStorage.getItem('id');
-        const idProducto = 'prueba';//document.querySelector('#categoria').value;
-        const formaPago = 'prueba';//document.querySelector('#metodopago1').value;
-        const descripcionHTML = 'hola';//document.querySelector('#textarea').value;
-        const precioHTML = 123;//document.querySelector('#precio').value;
-        const fechaHTML = '10:50:00-05:00'//fecha; // falta la fecha
-        const img = 'prueba';//imagenes; // no esta la variable img
-        const dataIMG = 'prueba';//nombreImagen; // no esta la data de la img
-
-        const datos = {
+        
+        const idUsuario = localStorage.getItem('id');
+        const idProducto = document.querySelector('#categoria').value;
+        const formaPago = metPago;
+        const descripcionHTML = document.querySelector('#textarea').value;
+        const precioHTML = document.querySelector('#precio').value;
+        //const fechaHTML = document.querySelector('#textarea').value; // falta la fecha
+        const img = nombreImagen; // no esta la variable img
+        const dataIMG = imagenes; // no esta la data de la img
+        console.log(formaPago)
+        /*
+         *  const datos = {
             fk_idusuario: idUsuario,
             fk_idcatproducto: idProducto,
             fk_idpago: formaPago,
             descripcion: descripcionHTML,
             precio: precioHTML,
             fecha: fechaHTML,
+            nombreimg: img,
+            archivoimg: dataIMG
+        }
+         * 
+         * 
+         * */
+        
+        const datos = {
+            fk_idusuario: idUsuario,
+            fk_idcatproducto: idProducto,
+            fk_idpago: formaPago,
+            descripcion: descripcionHTML,
+            precio: precioHTML,
+            fecha: fecha,
             nombreimg: img,
             archivoimg: dataIMG
         }
