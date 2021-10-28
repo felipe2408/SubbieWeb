@@ -4,17 +4,26 @@
     padding-top: 40px;
     padding-bottom: 30px;
     font-weight: 300;
+ 
 }
+
 
 .contenedor_principal {
     position: relative;
-    display: flex;
-    justify-content: space-around;
+    display: inline-block;
+    margin-left:50%;
+    width:auto;
 }
-
+/*TEXTO DE BIENVENIDA*/
+.texto-bienvenida {
+    display: inline-block;
+    margin-top: 150px;
+    float: left;
+    margin-left: 5%;
+}
 /*NAVBAR SUPERIOR*/
 .navbar {
-    height: 20px !important;
+    height: 50px !important;
     margin-top: 20px;
     border-radius: 30px;
     margin-left: 5%;
@@ -23,7 +32,6 @@
     z-index: 1;
     color: white;
 }
-
 .registrarse {
     position: absolute !important;
     float: right !important;
@@ -37,18 +45,18 @@
     color: none !important;
 }
 
-    .registrarse:nth-child(1) {
-        background-color: red !important;
-        color: black;
-    }
+.registrarse:nth-child(1) {
+    background-color: red !important;
+    color: black;
+}
 /*TEXTO DE BIENVENIDA*/
 .texto_bienvenidos:nth-child(2) {
-    width: 400px;
+    width: auto;
     float: left;
     position: relative;
     margin-top: 100px;
     margin-left: 50px;
-    margin-right: 50px display: flex;
+    margin-right: 50px;display: flex;
     font-size: 18px;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -76,7 +84,6 @@
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     margin-right: -160px;
-    margin-left: 50px;
     float: right;
     margin-top: 35px;
 }
@@ -87,14 +94,14 @@
     flex-wrap: wrap;
 }
 
-    .contenedor_formulario input {
-        width: 100%;
-        border: none !important;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        border-radius: 13px;
-        height: 30px;
-    }
+.contenedor_formulario input {
+    width: 100%;
+    border: none !important;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border-radius: 13px;
+    height: 40px;
+}
 
 .Ingresar {
     width: 30% !important;
@@ -137,8 +144,27 @@ header img {
     z-index: 100;
     transform: rotate(180deg);
 }
+@media screen and (max-width: 1700px) {
+    .contenedor_principal {
+        margin-left:20%;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .contenedor_principal {
+        margin-left: 10%;
+    }
 
+}
+@media screen and (max-width: 1200px) {
+    .contenedor_principal {
+        margin-left: 0;
+    }
+}
 @media screen and (max-width: 900px) {
+
+    .contenedor_principal {
+        margin-left: 0;
+    }
     .texto_bienvenidos:nth-child(2) {
         width: 50%;
     }

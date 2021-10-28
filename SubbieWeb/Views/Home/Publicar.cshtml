@@ -31,6 +31,7 @@
         </form>
     </nav>
 </div>
+<div class="container" id="alerta"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>
     //variable que contiene las imágenes
@@ -186,6 +187,18 @@
             },
             body: JSON.stringify(datos) // body data type must match "Content-Type" header
         })
+
+
+        var alerta = '';
+
+        alerta += `<div class="alert alert-info alert-dismissible fade show" role="alert">
+
+                            SE HA GUARDADO LA PUBLICACIÓN
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        </div>`;
+        $('#alerta').html(alerta);
        
     });
     
