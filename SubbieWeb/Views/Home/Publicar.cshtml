@@ -147,20 +147,6 @@
         const img = nombreImagen; // no esta la variable img
         const dataIMG = imagenes; // no esta la data de la img
         console.log(formaPago)
-        /*
-         *  const datos = {
-            fk_idusuario: idUsuario,
-            fk_idcatproducto: idProducto,
-            fk_idpago: formaPago,
-            descripcion: descripcionHTML,
-            precio: precioHTML,
-            fecha: fechaHTML,
-            nombreimg: img,
-            archivoimg: dataIMG
-        }
-         * 
-         * 
-         * */
         
         const datos = {
             fk_idusuario: idUsuario,
@@ -183,8 +169,7 @@
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: 'same-origin', // include, *same-origin, omit
             headers: {
-                'Content-Type': 'application/json; charset=utf-8', Ac
-cept: '*/*'
+                'Content-Type': 'application/json; charset=utf-8', Accept: '*/*'
             },
             body: JSON.stringify(datos) // body data type must match "Content-Type" header
         })

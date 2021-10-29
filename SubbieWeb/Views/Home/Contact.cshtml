@@ -19,29 +19,121 @@
     </form>
 </div>
 <div class="container">
-    <div id="lista-productos" class="row row-cols-2" style="overflow: scroll; max-height: 75vh"></div>
+    <div id="lista-productos" class="row row-cols-2" style="overflow: auto; max-height: 75vh; width:auto;"></div>
 </div>
+<div id="alerta"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
 <script>
-    metodoPago();
-    function metodoPago() {
+    //funcion que permite subir imagenes
+    $(document).on('click', '.ver_mas', function (e) {
+
+        //obtenemos a qué elemento le dieron clic
+        elemento = $(this).attr('id');
+        //mostramos elemento
+        obtenerProducto(elemento)
+    });
+    let palabra = '';
+    var buscar = document.getElementById('buscar');
+    buscar.addEventListener('keyup', (event) => {
+        //limpiamos vista
+        $('#lista-productos').empty();
+        //si borran una palabra actualizamos
+        if (event.key=='Backspace') {
+            palabra = $('#buscar').val()
+            if (palabra == '') {
+                productos();
+            }
+        } else {
+            palabra += event.key;
+        }
+ 
+
+        const url = 'https://localhost:44332/api/producto/publicacion'
+        fetch(url).then(response => response.json()).then(data => {
+            
+            for (let i = 0; i < data.length; i++) {
+                var desc = data[i].descripcion
+                var precio = data[i].precio
+                var imagen = data[i].archivoimg
+                console.log(toString(precio)[0])
+                if (desc.includes(palabra) == true ) {
+                    imagen = imagen.split('data:image')
+                    var productos = '';
+                    productos += `<div class="col contenedor-productos" style="background-color: #e7e9fd">
+                                <div class="imagen_producto"><img src="data:image${imagen[1]}" alt="Alternate Text" width="100%"/></div>
+                                <div class="descripcion">${desc}</div>
+                                <div class="precio">precio:${precio}$</div>
+                                <div class="ver_mas" id="${i}" style="cursor:pointer;">Ver Mas</div>
+                                </div>`;
+                    //console.log(data[i]);
+                    $('#lista-productos').append(productos);
+                }
+            }
+            //console.log(data);
+        }).catch(err => console.log(err));
+    });
+    productos();
+    let contadorProductos=0;
+
+    function productos() {
         const url = 'https://localhost:44332/api/producto/publicacion'
         fetch(url).then(response => response.json()).then(data => {
             for (let i = 0; i < data.length; i++) {
                 var desc = data[i].descripcion
                 var precio = data[i].precio
-                var imagen = data[i].archivoimg
-                imagen = imagen.split('data: image')
+                var imagen = data[i].archivoimg                
+                imagen = imagen.split('data:image')
                 var productos = '';
                 productos += `<div class="col contenedor-productos" style="background-color: #e7e9fd">
-                            <div class="imagen_producto"><img src="${imagen}" alt="Alternate Text" width="90%"/></div>
+                            <div class="imagen_producto"><img src="data:image${imagen[1]}" alt="Alternate Text" width="100%"/></div>
                             <div class="descripcion">${desc}</div>
                             <div class="precio">precio:${precio}$</div>
-                            <div class="ver_mas">Ver Mas</div>
+                            <div class="ver_mas" id="${i}" style="cursor:pointer;">Ver Mas</div>
                             </div>`;
-                console.log(data[i]);
+                //console.log(data[i]);
                 $('#lista-productos').append(productos);
+                contadorProductos++
             }
-            console.log(data);
+            //console.log(data);
         }).catch(err => console.log(err));
     }
+
+    function obtenerProducto(x) {
+        const url = 'https://localhost:44332/api/producto/publicacion'
+        fetch(url).then(response => response.json()).then(data => {
+            for (let i = 0; i < data.length; i++) {
+                if (i == x) {
+                    var desc = data[i].descripcion
+                    var precio = data[i].precio
+                    var imagen = data[i].archivoimg
+                    imagen = imagen.split('data:image')
+                    console.log(imagen)
+                    var productos = '';
+                    productos += `<div id="produto-detallado-contenedor" class="alert  alert-dismissible fade show" role="alert">
+                                    <div class="imagen-pricipal"><img src="data:image${imagen[1]}" alt="error" /></div>
+                                    <div class="columna-dos">
+                                    <div class="titulo">producto ${i}</div>
+                                    <div class="precio-vista-detallada">Precio: ${precio}$</div>
+                                    <div class="detalle-vista-detallada">${desc}</div>
+                                    <div class="imagenes-vista-detallada">`;
+                    for (let k = 1; k <= imagen.length; k++) {
+                        if (imagen[k] != null) {
+                            productos += `<img src="data:image${imagen[k]}" alt="lost image" />`
+                        }
+                    }   
+                    productos +=   `</div>
+                                    <div class="boton-comprar"><div>comprar</div></div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>`;
+                    $('#alerta').html(productos);
+                }
+            }
+            //console.log(data);
+        }).catch(err => console.log(err));
+    }
+
+    
 </script>

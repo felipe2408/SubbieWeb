@@ -1,4 +1,7 @@
-﻿.buscador {
+﻿body {
+    font-family: Maiandra GD;
+}
+.buscador {
     width: 20%;
     border-radius: 10px;
     border: 0px;
@@ -62,4 +65,103 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     background-color: #671FAF;
     color:white;
+}
+/*PRODUCTO DETALLADO*/
+#produto-detallado-contenedor {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    background-color: #E7E9FD;
+    left:5%;
+    width: 90%;
+    top: 40px;
+    height: 80vh;
+    padding: 5%;
+    border-radius:30px;
+}
+.imagen-pricipal {
+    width: 50%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagen-pricipal img{
+
+    width:100%;
+    object-fit:contain;
+    height:60vh;
+}
+/*COLUMNA CON LOS DATOS*/
+.columna-dos {
+    width: 40%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 20px;
+}
+.columna-dos::-webkit-scrollbar {
+    width: 10px;
+    background: #12ACB7;
+    border-radius: 30px;
+    overflow-x: hidden;
+}
+.columna-dos::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #FFFFFF;
+    word-break: break-all;
+
+}
+.titulo{
+    text-align:center;
+    font-weight:600;
+    font-size:28px;
+}
+.precio-vista-detallada {
+    margin-top:20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.detalle-vista-detallada {
+    margin-top: 20px;
+    margin-top: 10px;
+    word-break: break-all;
+}
+.imagenes-vista-detallada {
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3D2C8D;
+    border-radius:20px;
+    overflow-x:auto;
+}
+.imagenes-vista-detallada img {
+    object-fit:contain;
+    width:120px;
+    height:150px;
+    border-radius:20px;
+}
+
+.boton-comprar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display:flex;
+    justify-content:center;
+    
+}
+.boton-comprar div {
+    padding: 5px;
+    border-radius: 15px;
+    width: 50%;
+    text-align: center;
+    background-color: #671FAF;
+    color: white;
+    cursor: pointer;
 }
