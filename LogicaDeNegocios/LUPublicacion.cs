@@ -14,5 +14,11 @@ namespace LogicaDeNegocios
             bool correcto = new DaoPublicaciones().publicar(publicacion);
             return correcto;
         }
+        public List<UPublicaciones> publicaciones()
+        {
+            List<UPublicaciones> listaP = new DaoPublicaciones().publicaciones();
+            
+            return listaP;
+        }
     }
 }

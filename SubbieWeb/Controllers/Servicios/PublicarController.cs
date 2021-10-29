@@ -14,6 +14,28 @@ namespace SubbieWeb.Controllers.Servicios
     [RoutePrefix("api/producto")]
     public class PublicarController : ApiController
     {
+        [Route("publicacion")]
+        [HttpGet]
+        public IHttpActionResult publicaciones()
+        {
+            if (!ModelState.IsValid)
+            {
+                string error = "Datos incorrectos, ";
+                foreach (var state in ModelState)
+                {
+                    foreach (var item in state.Value.Errors)
+                    {
+
+                        error += $"{item.ErrorMessage}";
+                    }
+                }
+                return BadRequest(error);
+            }
+            List<UPublicaciones> listaUsers = new LUPublicacion().publicaciones();
+            return Ok(listaUsers);
+
+
+        }
         [Route("publicar")]
         [HttpPost]
         public IHttpActionResult crearPublicacion(UPublicaciones publicacionU)

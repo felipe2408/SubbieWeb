@@ -33,7 +33,6 @@ namespace SubbieWeb.Controllers.Servicios
                 return BadRequest(error);
             }
             List<UInfoUsuarios> listaUsers = new LUInfoUsuarios().infoUsuarios();
-           // LUUsuarios().obtenerusarios()
             return Ok(listaUsers);
 
         }

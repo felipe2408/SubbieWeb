@@ -15,7 +15,7 @@ namespace Datos
             {
                 if(publicacionU != null)
                 {
-                    db.publicar.Add(publicacionU);
+                    db.publicaciones.Add(publicacionU);
                     db.SaveChanges();
                     correcto = true;
                 }
@@ -26,5 +26,17 @@ namespace Datos
             }
             return correcto;
         }
+        public List<UPublicaciones> publicaciones()
+        {
+            List<UPublicaciones> uDb = new List<UPublicaciones>();
+            using (var db = new DBMapeo())
+            {
+                uDb = db.publicaciones.ToList();
+            }
+            return uDb;
+        }
+
+
+
     }
 }
