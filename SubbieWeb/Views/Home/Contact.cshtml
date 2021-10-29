@@ -5,7 +5,7 @@
         padding-top: 10px;
         padding-left: 20px;
         padding-right: 20px;
-        width: 23%;
+        max-width: 230px;
         min-height: 70vh;
     }
 </style>
@@ -18,30 +18,45 @@
     </form>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
+    <div id="lista-productos" class="row row-cols-2" style="overflow: scroll; max-height: 75vh">
+        <div class="col contenedor-productos" style="background-color: #e7e9fd">
             <h5>Producto 1</h5>
-            Espacio para imagen
-            Descripción
-            <p><a class="botones-principales" href="">VER MÁS</a></p>
-        </div>
-        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
-            <h5>Producto 2</h5>
-            Espacio para imagen
-            Descripción
-            <p><a class="botones-principales" href="">VER MÁS</a></p>
-        </div>
-        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
-            <h5>Producto 3</h5>
-            Espacio para imagen
-            Descripción
-            <p><a class="botones-principales" href="">VER MÁS</a></p>
-        </div>
-        <div class="col-md-3 contenedor-productos" style="background-color: #e7e9fd">
-            <h5>Producto 4</h5>
             Espacio para imagen
             Descripción
             <p><a class="botones-principales" href="">VER MÁS</a></p>
         </div>
     </div>
 </div>
+<script>
+    metodoPago();
+    function metodoPago() {
+        const url = 'https://localhost:44332/api/producto/publicacion'
+        fetch(url).then(response => response.json()).then(data => {
+            //let ele = document.getElementById('contenedor_lista')
+            //for (let i = 0; i < data.length; i++) {
+              //  ele.innerHTML += `<div class="metodo_pago">${data[i].formapago}<input type="hidden"  name="name" value="${data[i].formapago}" id="metodo_pago_${i}" /><input type="hidden"  name="name" value="${data[i].pk_idpago}" id="metodo_pago__${i}" /></div>`
+            //}
+            console.log(data);
+
+        }).catch(err => console.log(err));
+
+    }
+    /*fetch('https://localhost:44332/api/producto/publicacion')
+        .then(response => response.json())
+            .then(data => {
+                data.forEach(element => {
+                    /*var desc = data[i].descripcion
+                    var precio = data[i].precio
+                    var imagen = data[i].archivoimg
+                    imagen = imagen.split('data: image')
+                    var producto = '';
+                    productos += `<div class="col contenedor-productos" style="background-color: #e7e9fd">
+                                    
+                                    Espacio para imagen
+                                    Descripción
+                                    <p><a class="botones-principales" href="">VER MÁS</a></p>
+                                  </div>`;
+                    console.log(data[i]);
+                })
+            })*/
+</script>
