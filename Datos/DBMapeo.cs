@@ -27,7 +27,7 @@ namespace Datos
         
         public DbSet<UProductoCategoria> obtenerCategoria { get; set; }
 
-        public DbSet<UPublicaciones> publicar { get; set; }
+        public DbSet<UPublicaciones> publicaciones { get; set; }
         public DbSet<UInfoUsuarios> infoUsuarios { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

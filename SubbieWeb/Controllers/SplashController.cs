@@ -62,10 +62,7 @@ namespace SubbieWeb.Controllers
 
             return View();
         }
-        public ActionResult Contenedor()
-        {
+        
 
-            return View();
-        }
     }
 }
