@@ -5,12 +5,38 @@
     padding-bottom: 30px;
     font-weight: 300;
 }
+.btnregister {
+    position: absolute !important;
+    right: 30px;
+    top: 10px;
+    background-color: #10FFCE;
+    border-radius: 30px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 .contenedor_principal {
     position: relative;
     display:inline-block;
     display: flex;
     justify-content: space-around;
+    
+}
+#info{
+    float:left;
+    width:30%;
+}
+#cont{
+    float:left;
+}
+.contenedor_principal1 {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    display:flex;
+    justify-content:space-around;
+     margin-top:60px;
 }
 /*TEXTO DE BIENVENIDA*/
 .texto-bienvenida{

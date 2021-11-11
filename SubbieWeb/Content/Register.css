@@ -6,13 +6,24 @@
     font-weight: 300;
  
 }
+.btnregister {
+    position: absolute !important;
+    right: 30px;
+    top: 10px;
+    background-color: #10FFCE;
+    border-radius:30px;
+    font-size:20px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
 
 
 .contenedor_principal {
     position: relative;
     display: inline-block;
-    margin-left:50%;
-    width:auto;
+    margin-left: 50%;
+    width: auto;
 }
 /*TEXTO DE BIENVENIDA*/
 .texto-bienvenida {
