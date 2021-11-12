@@ -14,7 +14,7 @@ registrer.addEventListener('click', function () {
             password: claveReg,
             usuarioNuevo: "false"
         }
-        const URL = 'https://localhost:44332/api/usuarios/registrarusuario'
+        const URL = 'http://18.228.29.128/api/usuarios/registrarusuario'
 
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
