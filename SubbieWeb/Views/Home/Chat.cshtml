@@ -4,7 +4,7 @@
     <div class="contenedor_de_chats">
         <div class="primer_contenedor">
             <div class="contenedor_perfil">
-                <div class="contenedor_imagen"><img src="https://estaticos-cdn.sport.es/clip/57b4defe-a487-4d9d-a9d5-4034b12575dc_alta-libre-aspect-ratio_default_0.jpg" alt="Alternate Text" /></div>
+                <div class="contenedor_imagen" id="contenedor_imagen"></div>
                 <!--Nombre-->
                 <div id="chats"></div>
                 <div class="estado_usuario"></div>
@@ -37,12 +37,12 @@
             <form action="/" method="post">
                 <textarea></textarea>
                 <!-- <input type="file" name="name" value="" />
-        <input type="submit" name="name" value="" />-->
+                <input type="submit" name="name" value="" />-->
             </form>
-                <div></div>
-            </div>
+            <div></div>
+        </div>
         <div class="contenedor_tres">
-            <div class="contenedor_imagen_tercera_parte">
+            <div class="contenedor_imagen_tercera_parte" >
                 <img class="imagen" src="https://thumbs.dreamstime.com/b/ilustra%C3%A7%C3%A3o-vetorial-das-m%C3%A3os-de-desenho-animado-segurando-um-nacho-229626059.jpg" alt="Alternate Text" />
             </div>
 
@@ -58,6 +58,14 @@
             <div class="archivos_botones">Videos</div>
             <div class="archivos_botones">Otros</div>
         </div>
-        </div>
-    <script src="~/Scripts/Nombres.js"></script>
     </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>
+
+    //funcion que permite subir imagenes
+    if (localStorage.getItem("imagen") != null) {
+        $('#contenedor_imagen').append(`<div><img style=" left:40%;width:180px; height:180px; border-radius:100%;" src="${localStorage.getItem("imagen")}" alt="Alternate Text" /></div>`)
+    }
+</script>
