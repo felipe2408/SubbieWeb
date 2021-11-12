@@ -15,9 +15,9 @@
 <body>
     <div class="contenedor_principal1">
         <form id="info">
-            <input type="text" placeholder="Ingresa tus nombres" class="form-control nombres"  />
+            <input type="text" placeholder="Ingresa tus nombres" class="form-control nombres" />
             <br />
-            <input type="text" placeholder="Ingresa tus Apellidos" class="form-control apellidos"  />
+            <input type="text" placeholder="Ingresa tus Apellidos" class="form-control apellidos" />
             <br />
             <label>Tipo de identificación</label>
             <select class="tipoID">
@@ -25,7 +25,7 @@
                 <option value="TI">TI</option>
                 <option value="PA">PA</option>
             </select>
-            <input type="text" placeholder="Numero de identificación" class="form-control numId"  required />
+            <input type="text" placeholder="Numero de identificación" class="form-control numId" required />
             <br />
             <input type="text" placeholder="Telefono" class="form-control telefono" required />
             <br />
@@ -36,33 +36,58 @@
             <input type="button" value="Guardar" class="Guardar botones-principales">
 
         </form>
-   
+
         <div id="cont">
             <div class="texto_bienvenidos">
 
             </div>
-            
+
             <div class="form-contenedor col-lg-12">
-                <div class="titulo_inicia_sesion">
+                <div class="titulo_inicia_sesion" >
                     Sube tu foto de perfil
                 </div>
-                <div class="contenedor_iconos">
-                    <div class="iconos"></div>
-                    
+                <input style="position:absolute; bottom:40px; left:45%; width:40px; height:40px; z-index:100;" type="file" name="name" value="" id="imagen" />
+                <div style="position:absolute;  bottom:40px; left:55%;" class="vista_agregar btn btn-light">+</div>
+                <div class="contenedor_iconos" >
+                    <div class="iconos" id="contenedor_imagen" style=" left:40%;width:180px; height:180px; border-radius:100%;" >
+
+                    </div>
+
                 </div>
                 <br />
                 <form class="contenedor_formulario">
-                    
                 </form>
 
             </div>
 
         </div>
-       
+
 
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
+    <script>
+        //funcion que permite subir imagenes
+        if (localStorage.getItem("imagen")!= null) {
+            $('#contenedor_imagen').append(`<div><img style=" left:40%;width:180px; height:180px; border-radius:100%;" src="${localStorage.getItem("imagen")}" alt="Alternate Text" /></div>`)
+        }
+        $('#imagen').on("change", function () {
+            var imagen = $(this)[0].files[0];
+            console.log(imagen);
+            //nombreImagen = nombreImagen + "data:" + imagen.name;
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(imagen);
+            fileReader.onload = function () {
+                $('#contenedor_imagen').append(`<div><img style=" left:40%;width:180px; height:180px; border-radius:100%;" src="${fileReader.result}" alt="Alternate Text" /></div>`)
+                //la variable   fileReader.result   es la que se sube a la base de datos es una cadena muy larga
+                console.log(fileReader.result);
+                localStorage.setItem("imagen", fileReader.result);
+                //imagenes = imagenes + fileReader.result;
+            }
+
+        });
+    </script>
     <script src="~/Scripts/ValidacionesImportanes.js"></script>
     <script src="~/Scripts/guardarInfoUsuarios.js"></script>
 
