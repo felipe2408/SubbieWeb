@@ -85,7 +85,7 @@
 
     function categoria()
     {
-        const url = 'https://localhost:44332/api/categoriaProducto/categorias'
+        const url = 'http://18.228.29.128/api/categoriaProducto/categorias'
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('categoria')
             for (let i = 0; i < data.length; i++) {
@@ -99,7 +99,7 @@
            
     function metodoPago()
     {
-        const url = 'https://localhost:44332/api/obtenerFormaPago/formaPago'
+        const url = 'http://18.228.29.128/api/obtenerFormaPago/formaPago'
         fetch(url).then(response => response.json()).then(data => {
             let ele = document.getElementById('contenedor_lista')
             for (let i = 0; i < data.length; i++) {
@@ -161,7 +161,7 @@
         
         console.log(JSON.stringify(datos))
         
-        const URL = 'https://localhost:44332/api/producto/publicar'
+        const URL = 'http://18.228.29.128/api/producto/publicar'
 
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
