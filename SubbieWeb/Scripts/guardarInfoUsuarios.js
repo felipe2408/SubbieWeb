@@ -4,6 +4,8 @@ event.addEventListener('click', function () {
     var id = localStorage.getItem('id');
     const nombreHTML = document.querySelector('.nombres').value
     const apellidosHTML = document.querySelector('.apellidos').value
+    localStorage.setItem('nombre', nombreHTML)
+    localStorage.setItem('apellido', apellidosHTML)
     const tipoIDHTML = document.querySelector('.tipoID').value
     const numIdHTML = document.querySelector('.numId').value
     const telefonoHTML = document.querySelector('.telefono').value
@@ -31,5 +33,8 @@ event.addEventListener('click', function () {
         },
         body: JSON.stringify(datos) // body data type must match "Content-Type" header
     })
+
+    var url = "http://18.228.29.128/Home/Index";
+    window.location = url;
 })
     

@@ -38,6 +38,8 @@ registrer.addEventListener('click', function () {
 
                         </div>`;
         $('#alerta').html(alerta);
+        var url = "http://18.228.29.128/Home/Index";
+        window.location = url;
     } else {
         alert("Ouch! Al parecer una de las claves no es igual")
     }
