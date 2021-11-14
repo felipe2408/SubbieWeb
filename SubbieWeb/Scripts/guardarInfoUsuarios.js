@@ -34,7 +34,7 @@ event.addEventListener('click', function () {
         body: JSON.stringify(datos) // body data type must match "Content-Type" header
     })
 
-    var url = "http://18.228.29.128/Home/Index";
+    var url = "https://localhost:44332/Home/Index";
     window.location = url;
 })
     

@@ -1,9 +1,11 @@
 ﻿localStorage.clear()
+// obtenemos la informacion de acuerdo al boton de registrar del html
 let registrer = document.querySelector('.Registrar')
 registrer.addEventListener('click', function () {
     const emailRegistrer = document.querySelector('.emailReg').value
     const claveReg = document.querySelector('.pass').value
     const claveRegConf = document.querySelector('.passConf').value
+    // guardarmos la informacion en el localStorage del navegador
     localStorage.setItem('emailReg', emailRegistrer)
     localStorage.setItem('pass', claveReg)
     localStorage.setItem('passConf', claveRegConf)
@@ -14,7 +16,7 @@ registrer.addEventListener('click', function () {
             password: claveReg,
             usuarioNuevo: "false"
         }
-        const URL = 'http://18.228.29.128/api/usuarios/registrarusuario'
+        const URL = 'https://localhost:44332/api/usuarios/registrarusuario'
 
         fetch(URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -27,7 +29,7 @@ registrer.addEventListener('click', function () {
             body: JSON.stringify(datos) // body data type must match "Content-Type" header
         })
 
-
+        // mensaje de alerta para un registro exitoso
         var alerta = '';
 
         alerta += `<div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -38,7 +40,8 @@ registrer.addEventListener('click', function () {
 
                         </div>`;
         $('#alerta').html(alerta);
-        var url = "http://18.228.29.128/Home/Index";
+        // re direcciona a la pagina de home al momento de agregar la informacion
+        var url = "https://localhost:44332/Home/Index";
         window.location = url;
     } else {
         alert("Ouch! Al parecer una de las claves no es igual")

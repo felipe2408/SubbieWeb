@@ -11,6 +11,7 @@ namespace SubbieWeb.Controllers.Servicios
     [RoutePrefix("api/usuarios")]
     public class UsuariosController : ApiController
     {
+        //servicio Get para devolver todos los usuarios
         [Route("listausuarios")]
         [HttpGet]
         public IHttpActionResult listarusuarios()
@@ -31,6 +32,7 @@ namespace SubbieWeb.Controllers.Servicios
             List<UUsuarios> listaUsers = new LUUsuarios().obtenerusarios();
             return Ok(listaUsers);
         }
+        // servicio para registrar usuario que recibe un objeto segun el ORM
         [Route("registrarusuario")]
         [HttpPost]
         public IHttpActionResult registrarusuario(UUsuarios user)
